@@ -1,5 +1,19 @@
 # purplegaze
 
+# GIT FLOW:
+* git checkout develop
+* git pull
+* git branch branch-name ([issue-type]-[issue #]-[issue-name])
+* git checkout branch-name
+* Working on issue
+* git add (.)
+* git commit -m "commit message" ([issue-type]: [what's new/fixed/added])
+* git push
+* Create pull request on github to develop branch
+* Wait for merge/review
+* Goto 1st step.
+
+
 ## Project setup
 ```
 npm install
