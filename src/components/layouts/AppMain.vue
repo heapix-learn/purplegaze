@@ -3,14 +3,14 @@
 </template>
 
 <script>
-    export default {
-        name: "AppMain",
-      data () {
-        return {
-          title: 'Hello! I\'m main!'
-        }
-      }
-    }
+export default {
+  name: 'AppMain',
+  data() {
+    return {
+      title: 'Hello! I\'m main!',
+    };
+  },
+};
 </script>
 
 <style scoped>

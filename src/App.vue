@@ -9,16 +9,17 @@
 </template>
 
 <script>
-  import AppHeader from './components/layouts/AppHeader'
-  import AppMain from './components/layouts/AppMain'
-  import AppFooter from './components/layouts/AppFooter'
-  export default {
-    components: {
-      appHeader: AppHeader,
-      appMain: AppMain,
-      appFooter: AppFooter
-    }
-  }
+import AppHeader from './components/layouts/AppHeader';
+import AppMain from './components/layouts/AppMain';
+import AppFooter from './components/layouts/AppFooter';
+
+export default {
+  components: {
+    appHeader: AppHeader,
+    appMain: AppMain,
+    appFooter: AppFooter,
+  },
+};
 </script>
 
 <style>

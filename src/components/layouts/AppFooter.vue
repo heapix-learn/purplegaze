@@ -3,14 +3,14 @@
 </template>
 
 <script>
-    export default {
-        name: "AppFooter",
-      data () {
-        return {
-          title: 'Hello! I\'m footer!'
-        }
-      }
-    }
+export default {
+  name: 'AppFooter',
+  data() {
+    return {
+      title: 'Hello! I\'m footer!',
+    };
+  },
+};
 </script>
 
 <style scoped>
