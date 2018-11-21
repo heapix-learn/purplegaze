@@ -6,6 +6,7 @@
 * git branch branch-name ([issue-type]-[issue #]-[issue-name])
 * git checkout branch-name
 * Working on issue
+* npm run lint
 * git add (.)
 * git commit -m "commit message" ([issue-type]: [what's new/fixed/added])
 * git push
