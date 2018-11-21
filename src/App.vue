@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <app-header/>
+    <app-header v-if="!isSignPage"/>
     <app-main>
       <router-view/>
     </app-main>
-    <app-footer/>
+    <app-footer v-if="!isSignPage"/>
   </div>
 </template>
 
@@ -14,10 +14,11 @@ import AppMain from './components/layouts/AppMain';
 import AppFooter from './components/layouts/AppFooter';
 
 export default {
-  components: {
-    appHeader: AppHeader,
-    appMain: AppMain,
-    appFooter: AppFooter,
+  components: { AppHeader, AppMain, AppFooter },
+  computed: {
+    isSignPage() {
+      return this.$route.path.includes('signup');
+    },
   },
 };
 </script>
@@ -25,6 +26,10 @@ export default {
 <style>
   html {
     font-size: 62.5%;
+  }
+
+  body {
+    font-size: 1.6rem;
   }
   :root {
   --white: #fff;
