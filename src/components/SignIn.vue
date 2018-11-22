@@ -1,18 +1,8 @@
 <template>
   <div class="signup-main">
     <div class="row signup-block">
-      <h1 class="title">Sign up</h1>
+      <h1 class="title">Sign in</h1>
       <form class="col s12 form">
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" v-model="firstName">
-            <label for="first_name">First Name</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" v-model="lastName">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div>
         <div class="row">
           <div class="input-field col s12">
             <input id="email" type="email" class="validate" v-model="email">
@@ -34,9 +24,10 @@
           </p>
         </div>
         <div class="buttons">
-          <a class="waves-effect waves-light btn button-sign" @click="checkForm">Sign up!</a>
-          <a class="waves-effect waves-light btn button-login" @click="goSignIn">Login instead</a>
+          <a class="waves-effect waves-light btn button-sign" @click="checkForm">Sign in!</a>
+          <a class="waves-effect waves-light btn button-login" @click="goSignUp">Create account</a>
         </div>
+
       </form>
     </div>
   </div>
@@ -44,29 +35,21 @@
 
 <script>
 export default {
-  name: 'SignUp',
+  name: 'SignIn',
   data() {
     return {
       errors: [],
-      firstName: '',
-      lastName: '',
       email: '',
       pass: '',
     };
   },
   methods: {
-    goSignIn() {
-      this.$router.push('/signin');
+    goSignUp() {
+      this.$router.push('/signup');
     },
     checkForm(e) {
       this.errors = [];
 
-      if (!this.firstName) {
-        this.errors.push('Укажите имя.');
-      }
-      if (!this.lastName) {
-        this.errors.push('Укажите фамилию.');
-      }
       if (!this.pass) {
         this.errors.push('Укажите пароль.');
       }
@@ -105,17 +88,18 @@ export default {
 
   .signup-block {
     width: 100rem;
+    height: 50rem;
     border: 0.3rem solid var(--black);
   }
 
   .form {
-    height: 50rem;
+    height: 30rem;
     padding: 0 28rem;
   }
 
   .error-place {
     width: 400px;
-    height: 126px;
+    height: 78px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -127,6 +111,7 @@ export default {
     font-family: Arial;
     opacity: 0;
   }
+
   .error-place-vis {
     opacity: 1;
   }
@@ -137,11 +122,11 @@ export default {
 
   .button-sign {
     width: 10rem;
-    margin-right: 6rem;
+    margin-right: 4rem;
   }
 
   .button-login {
     width: 20rem;
-    margin-left: 6rem;
+    margin-left: 4rem;
   }
 </style>
