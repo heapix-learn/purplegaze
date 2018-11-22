@@ -5,11 +5,11 @@
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" v-model="first_name">
+            <input id="first_name" type="text" class="validate" v-model="firstName">
             <label for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" v-model="last_name">
+            <input id="last_name" type="text" class="validate" v-model="lastName">
             <label for="last_name">Last Name</label>
           </div>
         </div>
@@ -102,7 +102,6 @@ export default {
 
   .signup-block {
     width: 100rem;
-    /*margin: 20vh auto;*/
     border: 0.3rem solid var(--black);
   }
 
