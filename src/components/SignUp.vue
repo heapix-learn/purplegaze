@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <div class="row block">
+  <div class="signup-main">
+    <div class="row signup-block">
       <h1 class="title">Sign up</h1>
       <form class="col s12 form">
         <div class="row">
@@ -48,8 +48,8 @@ export default {
   data() {
     return {
       errors: [],
-      first_name: '',
-      last_name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       pass: '',
     };
@@ -58,10 +58,10 @@ export default {
     checkForm(e) {
       this.errors = [];
 
-      if (!this.first_name) {
+      if (!this.firstName) {
         this.errors.push('Укажите имя.');
       }
-      if (!this.last_name) {
+      if (!this.lastName) {
         this.errors.push('Укажите фамилию.');
       }
       if (!this.pass) {
@@ -88,7 +88,10 @@ export default {
 </script>
 
 <style scoped>
-  .main {
+  .signup-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     text-align: center;
   }
@@ -97,9 +100,9 @@ export default {
     margin: 3rem 0 5rem 0;
   }
 
-  .block {
+  .signup-block {
     width: 100rem;
-    margin: 20vh auto;
+    /*margin: 20vh auto;*/
     border: 0.3rem solid var(--black);
   }
 
