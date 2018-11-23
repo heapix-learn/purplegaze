@@ -17,7 +17,7 @@ export default {
   components: { AppHeader, AppMain, AppFooter },
   computed: {
     isSignPage() {
-      return this.$route.path.includes('signup');
+      return this.$route.path.includes('signup') || this.$route.path.includes('signin');
     },
   },
 };
@@ -30,6 +30,7 @@ export default {
 
   body {
     font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
   }
   :root {
   --white: #fff;

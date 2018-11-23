@@ -1,6 +1,7 @@
 <template>
     <div class="app-header">
       <router-link to="/signup" class="app-header-link">sign up</router-link>
+      <router-link to="/signin" class="app-header-link">sign in</router-link>
     </div>
 </template>
 
@@ -23,6 +24,7 @@ export default {
   }
 
   .app-header-link {
+    display: inherit;
     font-size: 2rem;
   }
 </style>
