@@ -5,8 +5,8 @@ const path = require('path');
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 
 function isProtected(req) {
-  return req.path === '/protected' && req.method === 'GET'
-}
+  return req.path === '/protected' && req.method === 'GET';
+};
 
 server.use(middlewares);
 server.use((req, res, next) => {
@@ -15,7 +15,7 @@ server.use((req, res, next) => {
       next();
     } else {
       return res.status(401).json({
-        message: 'Access denied'
+        message: 'Access denied',
       });
     };
   } else {
