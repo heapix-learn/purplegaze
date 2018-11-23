@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "free": {
+    "meow": "I'm not protected"
+  },
+  "protected": {
+    "meow": "I'm protected"
+  }
+}
