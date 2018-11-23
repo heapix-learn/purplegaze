@@ -5,12 +5,12 @@
 <script>
 export default {
   name: 'AppFooter',
-  data() {
+  data () {
     return {
-      title: 'Hello! I\'m footer!',
-    };
-  },
-};
+      title: 'Hello! I\'m footer!'
+    }
+  }
+}
 </script>
 
 <style scoped>

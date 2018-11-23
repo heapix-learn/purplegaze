@@ -9,18 +9,18 @@
 </template>
 
 <script>
-import AppHeader from './components/layouts/AppHeader';
-import AppMain from './components/layouts/AppMain';
-import AppFooter from './components/layouts/AppFooter';
+import AppHeader from './components/layouts/AppHeader.vue'
+import AppMain from './components/layouts/AppMain.vue'
+import AppFooter from './components/layouts/AppFooter.vue'
 
 export default {
   components: { AppHeader, AppMain, AppFooter },
   computed: {
-    isSignPage() {
-      return this.$route.path.includes('signup') || this.$route.path.includes('signin');
-    },
-  },
-};
+    isSignPage () {
+      return this.$route.path.includes('signup') || this.$route.path.includes('signin')
+    }
+  }
+}
 </script>
 
 <style>
