@@ -5,27 +5,27 @@
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" v-model="firstName">
+            <input id="first_name" type="text" class="validate" v-model="firstName" @input="clearErrors">
             <label for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" v-model="lastName">
+            <input id="last_name" type="text" class="validate" v-model="lastName" @input="clearErrors">
             <label for="last_name">Last Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" v-model="email">
+            <input id="email" type="email" class="validate" v-model="email" @input="clearErrors">
             <label for="email">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" v-model="pass">
+            <input id="password" type="password" class="validate" v-model="password" @input="clearErrors">
             <label for="password">Password</label>
           </div>
         </div>
-        <div class="error-place" :class="{'error-place-vis': errors.length}">
+        <div class="error-block" :class="{'error-block--visible': errors.length}">
           <p v-if="errors.length">
             <b>Пожалуйста исправьте указанные ошибки:</b>
           <ul>
@@ -34,7 +34,7 @@
           </p>
         </div>
         <div class="buttons">
-          <a class="waves-effect waves-light btn button-sign" @click="checkForm">Sign up!</a>
+          <a class="waves-effect waves-light btn button-sign" @click="checkForm" :disabled="errors.length > 0">Sign up!</a>
           <a class="waves-effect waves-light btn button-login" @click="goSignIn">Login instead</a>
         </div>
       </form>
@@ -51,7 +51,7 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      pass: '',
+      password: '',
     };
   },
   methods: {
@@ -63,11 +63,25 @@ export default {
 
       if (!this.firstName) {
         this.errors.push('Укажите имя.');
+      } else if (this.firstName.length < 2) {
+        this.errors.push('Имя должно быть не короче 2-х символов.');
+      } else if (this.firstName.replace(/\s/g, '') == '') {
+        this.errors.push('Имя не должно содержать пробелы.');
+      } else if (this.firstName.indexOf([0 - 9])) {
+        this.errors.push('Имя не должно содержать цифры.');
       }
+
       if (!this.lastName) {
         this.errors.push('Укажите фамилию.');
+      } else if (this.lastName.length < 2) {
+        this.errors.push('Фамилия должна быть не короче 2-х символов.');
+      } else if (this.lastName.replace(/\s/g, '') == '') {
+        this.errors.push('Фамилия не должна содержать пробелы.');
+      } else if (this.firstName.indexOf([0 - 9])) {
+        this.errors.push('Фамилия не должна содержать цифры.');
       }
-      if (!this.pass) {
+
+      if (!this.password) {
         this.errors.push('Укажите пароль.');
       }
       if (!this.email) {
@@ -85,6 +99,9 @@ export default {
     validEmail(email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
+    },
+    clearErrors() {
+      this.errors = [];
     },
   },
 };
@@ -113,7 +130,7 @@ export default {
     padding: 0 28rem;
   }
 
-  .error-place {
+  .error-block {
     width: 400px;
     height: 126px;
     margin: auto;
@@ -127,7 +144,7 @@ export default {
     font-family: Arial;
     opacity: 0;
   }
-  .error-place-vis {
+  .error-block--visible {
     opacity: 1;
   }
 

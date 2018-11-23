@@ -5,17 +5,17 @@
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" v-model="email">
+            <input id="email" type="email" class="validate" v-model="email" @input="clearErrors">
             <label for="email">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" v-model="pass">
+            <input id="password" type="password" class="validate" v-model="password" @input="clearErrors">
             <label for="password">Password</label>
           </div>
         </div>
-        <div class="error-place" :class="{'error-place-vis': errors.length}">
+        <div class="error-block" :class="{'error-block--visible': errors.length}">
           <p v-if="errors.length">
             <b>Пожалуйста исправьте указанные ошибки:</b>
           <ul>
@@ -24,7 +24,7 @@
           </p>
         </div>
         <div class="buttons">
-          <a class="waves-effect waves-light btn button-sign" @click="checkForm">Sign in!</a>
+          <a class="waves-effect waves-light btn button-sign" @click="checkForm" :disabled="errors.length > 0">Sign in!</a>
           <a class="waves-effect waves-light btn button-login" @click="goSignUp">Create account</a>
         </div>
 
@@ -40,7 +40,7 @@ export default {
     return {
       errors: [],
       email: '',
-      pass: '',
+      password: '',
     };
   },
   methods: {
@@ -50,8 +50,9 @@ export default {
     checkForm(e) {
       this.errors = [];
 
-      if (!this.pass) {
+      if (!this.password) {
         this.errors.push('Укажите пароль.');
+        this.errors.length;
       }
       if (!this.email) {
         this.errors.push('Укажите электронную почту.');
@@ -68,6 +69,9 @@ export default {
     validEmail(email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
+    },
+    clearErrors() {
+      this.errors = [];
     },
   },
 };
@@ -97,7 +101,7 @@ export default {
     padding: 0 28rem;
   }
 
-  .error-place {
+  .error-block {
     width: 400px;
     height: 78px;
     margin: auto;
@@ -112,7 +116,7 @@ export default {
     opacity: 0;
   }
 
-  .error-place-vis {
+  .error-block--visible {
     opacity: 1;
   }
 
