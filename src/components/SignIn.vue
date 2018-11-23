@@ -11,7 +11,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" v-model="password" @input="clearErrors">
+            <input id="password"
+              type="password"
+              class="validate"
+              v-model="password"
+              @input="clearErrors"
+            >
             <label for="password">Password</label>
           </div>
         </div>
@@ -19,15 +24,17 @@
           <p v-if="errors.length">
             <b>Пожалуйста исправьте указанные ошибки:</b>
           <ul>
-            <li v-for="error in errors">{{ error }}</li>
+            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
           </ul>
           </p>
         </div>
         <div class="buttons">
-          <a class="waves-effect waves-light btn button-sign" @click="checkForm" :disabled="errors.length > 0">Sign in!</a>
+          <a class="waves-effect waves-light btn button-sign"
+             @click="checkForm"
+             :disabled="errors.length > 0"
+          >Sign in!</a>
           <a class="waves-effect waves-light btn button-login" @click="goSignUp">Create account</a>
         </div>
-
       </form>
     </div>
   </div>
@@ -36,45 +43,45 @@
 <script>
 export default {
   name: 'SignIn',
-  data() {
+  data () {
     return {
       errors: [],
       email: '',
-      password: '',
-    };
+      password: ''
+    }
   },
   methods: {
-    goSignUp() {
-      this.$router.push('/signup');
+    goSignUp () {
+      this.$router.push('/signup')
     },
-    checkForm(e) {
-      this.errors = [];
+    checkForm (e) {
+      this.errors = []
 
       if (!this.password) {
-        this.errors.push('Укажите пароль.');
-        this.errors.length;
+        this.errors.push('Укажите пароль.')
       }
       if (!this.email) {
-        this.errors.push('Укажите электронную почту.');
+        this.errors.push('Укажите электронную почту.')
       } else if (!this.validEmail(this.email)) {
-        this.errors.push('Укажите корректный адрес электронной почты.');
+        this.errors.push('Укажите корректный адрес электронной почты.')
       }
 
       if (!this.errors.length) {
-        return alert('Has been registered!');
+        return alert('Has been registered!')
       }
 
-      e.preventDefault();
+      e.preventDefault()
     },
-    validEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
+    validEmail (email) {
+      // eslint-disable-next-line
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
     },
-    clearErrors() {
-      this.errors = [];
-    },
-  },
-};
+    clearErrors () {
+      this.errors = []
+    }
+  }
+}
 </script>
 
 <style scoped>

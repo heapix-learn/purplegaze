@@ -5,23 +5,43 @@
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" v-model="firstName" @input="clearErrors">
+            <input id="first_name"
+                   type="text"
+                   class="validate"
+                   v-model="firstName"
+                   @input="clearErrors"
+            >
             <label for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" v-model="lastName" @input="clearErrors">
+            <input id="last_name"
+                   type="text"
+                   class="validate"
+                   v-model="lastName"
+                   @input="clearErrors"
+            >
             <label for="last_name">Last Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" v-model="email" @input="clearErrors">
+            <input id="email"
+                   type="email"
+                   class="validate"
+                   v-model="email"
+                   @input="clearErrors"
+            >
             <label for="email">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" v-model="password" @input="clearErrors">
+            <input id="password"
+                   type="password"
+                   class="validate"
+                   v-model="password"
+                   @input="clearErrors"
+            >
             <label for="password">Password</label>
           </div>
         </div>
@@ -29,12 +49,15 @@
           <p v-if="errors.length">
             <b>Пожалуйста исправьте указанные ошибки:</b>
           <ul>
-            <li v-for="error in errors">{{ error }}</li>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
           </p>
         </div>
         <div class="buttons">
-          <a class="waves-effect waves-light btn button-sign" @click="checkForm" :disabled="errors.length > 0">Sign up!</a>
+          <a class="waves-effect waves-light btn button-sign"
+             @click="checkForm"
+             :disabled="errors.length > 0"
+          >Sign up!</a>
           <a class="waves-effect waves-light btn button-login" @click="goSignIn">Login instead</a>
         </div>
       </form>
@@ -45,66 +68,67 @@
 <script>
 export default {
   name: 'SignUp',
-  data() {
+  data () {
     return {
       errors: [],
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-    };
+      password: ''
+    }
   },
   methods: {
-    goSignIn() {
-      this.$router.push('/signin');
+    goSignIn () {
+      this.$router.push('/signin')
     },
-    checkForm(e) {
-      this.errors = [];
+    checkForm (e) {
+      this.errors = []
 
       if (!this.firstName) {
-        this.errors.push('Укажите имя.');
+        this.errors.push('Укажите имя.')
       } else if (this.firstName.length < 2) {
-        this.errors.push('Имя должно быть не короче 2-х символов.');
-      } else if (this.firstName.replace(/\s/g, '') == '') {
-        this.errors.push('Имя не должно содержать пробелы.');
+        this.errors.push('Имя должно быть не короче 2-х символов.')
+      } else if (this.firstName.replace(/\s/g, '') === '') {
+        this.errors.push('Имя не должно содержать пробелы.')
       } else if (this.firstName.indexOf([0 - 9])) {
-        this.errors.push('Имя не должно содержать цифры.');
+        this.errors.push('Имя не должно содержать цифры.')
       }
 
       if (!this.lastName) {
-        this.errors.push('Укажите фамилию.');
+        this.errors.push('Укажите фамилию.')
       } else if (this.lastName.length < 2) {
-        this.errors.push('Фамилия должна быть не короче 2-х символов.');
-      } else if (this.lastName.replace(/\s/g, '') == '') {
-        this.errors.push('Фамилия не должна содержать пробелы.');
+        this.errors.push('Фамилия должна быть не короче 2-х символов.')
+      } else if (this.lastName.replace(/\s/g, '') === '') {
+        this.errors.push('Фамилия не должна содержать пробелы.')
       } else if (this.firstName.indexOf([0 - 9])) {
-        this.errors.push('Фамилия не должна содержать цифры.');
+        this.errors.push('Фамилия не должна содержать цифры.')
       }
 
       if (!this.password) {
-        this.errors.push('Укажите пароль.');
+        this.errors.push('Укажите пароль.')
       }
       if (!this.email) {
-        this.errors.push('Укажите электронную почту.');
+        this.errors.push('Укажите электронную почту.')
       } else if (!this.validEmail(this.email)) {
-        this.errors.push('Укажите корректный адрес электронной почты.');
+        this.errors.push('Укажите корректный адрес электронной почты.')
       }
 
       if (!this.errors.length) {
-        return alert('Has been registered!');
+        return alert('Has been registered!')
       }
 
-      e.preventDefault();
+      e.preventDefault()
     },
-    validEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
+    validEmail (email) {
+      // eslint-disable-next-line
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
     },
-    clearErrors() {
-      this.errors = [];
-    },
-  },
-};
+    clearErrors () {
+      this.errors = []
+    }
+  }
+}
 </script>
 
 <style scoped>

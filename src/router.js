@@ -1,9 +1,9 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
+import Vue from 'vue'
+import Router from 'vue-router'
+import SignUp from './components/SignUp.vue'
+import SignIn from './components/SignIn.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -11,11 +11,11 @@ export default new Router({
   routes: [
     {
       path: '/signup',
-      component: SignUp,
+      component: SignUp
     },
     {
       path: '/signin',
-      component: SignIn,
-    },
-  ],
-});
+      component: SignIn
+    }
+  ]
+})

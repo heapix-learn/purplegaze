@@ -7,12 +7,12 @@
 <script>
 export default {
   name: 'AppMain',
-  data() {
+  data () {
     return {
-      title: 'Hello! I\'m main!',
-    };
-  },
-};
+      title: 'Hello! I\'m main!'
+    }
+  }
+}
 </script>
 
 <style scoped>

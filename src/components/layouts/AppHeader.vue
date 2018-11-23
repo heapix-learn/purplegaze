@@ -8,12 +8,12 @@
 <script>
 export default {
   name: 'AppHeader',
-  data() {
+  data () {
     return {
-      title: 'Hello! I\'m header!',
-    };
-  },
-};
+      title: 'Hello! I\'m header!'
+    }
+  }
+}
 </script>
 
 <style scoped>
