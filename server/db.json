@@ -11,5 +11,14 @@
   },
   "protected": {
     "meow": "I'm protected"
-  }
+  },
+  "users": [
+    {
+      "firstName": "Sasha",
+      "lastName": "Grey",
+      "email": "hotchik@gmail.com",
+      "password": "123",
+      "id": 1
+    }
+  ]
 }
