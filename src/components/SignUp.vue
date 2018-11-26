@@ -97,7 +97,7 @@ export default {
         this.errors.push('Имя должно быть не короче 2-х символов.')
       } else if (this.user.firstName.replace(/\s/g, '') === '') {
         this.errors.push('Имя не должно содержать пробелы.')
-      } else if (this.user.firstName.indexOf([0 - 9])) {
+      } else if (!this.user.firstName.indexOf([0 - 9])) {
         this.errors.push('Имя не должно содержать цифры.')
       }
 
@@ -107,7 +107,7 @@ export default {
         this.errors.push('Фамилия должна быть не короче 2-х символов.')
       } else if (this.user.lastName.replace(/\s/g, '') === '') {
         this.errors.push('Фамилия не должна содержать пробелы.')
-      } else if (this.user.lastName.indexOf([0 - 9])) {
+      } else if (!this.user.lastName.indexOf([0 - 9])) {
         this.errors.push('Фамилия не должна содержать цифры.')
       }
 
@@ -122,10 +122,6 @@ export default {
 
       if (!this.errors.length) {
         this.postNewUser(this.user)
-        api.postNewUser()
-          .then(response => {
-            console.log(response.data)
-          })
       }
 
       e.preventDefault()
@@ -137,6 +133,9 @@ export default {
     },
     clearErrors () {
       this.errors = []
+    },
+    postNewUser (user) {
+      api.postNewUser(user)
     }
   }
 }
