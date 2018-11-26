@@ -33,6 +33,20 @@
       "email": "johndoe@gmail.com",
       "password": "12345",
       "id": 3
+    },
+    {
+      "firstName": "Bugs",
+      "lastName": "Bunny",
+      "email": "carrot13@mail.ru",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "firstName": "Piggy",
+      "lastName": "Ponk",
+      "email": "piggy13@gmail.com",
+      "password": "123",
+      "id": 5
     }
   ]
 }

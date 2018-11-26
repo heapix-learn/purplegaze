@@ -5,13 +5,16 @@ function getPosts () {
     .then(response => {
       console.log(response.data)
     })
+    .catch((err) => {
+      console.log(err)
+    })
 }
-function postNewUser (user) {
+function signUp (user) {
   axios.post('http://localhost:8008/users', user)
     .then(response => {
       console.log(response.data)
     })
 }
 export default {
-  getPosts, postNewUser
+  getPosts, signUp
 }

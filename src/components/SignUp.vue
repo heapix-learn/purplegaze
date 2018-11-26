@@ -121,7 +121,7 @@ export default {
       }
 
       if (!this.errors.length) {
-        this.postNewUser(this.user)
+        api.signUp(this.user)
       }
 
       e.preventDefault()
@@ -133,9 +133,6 @@ export default {
     },
     clearErrors () {
       this.errors = []
-    },
-    postNewUser (user) {
-      api.postNewUser(user)
     }
   }
 }
