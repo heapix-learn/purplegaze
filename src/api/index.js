@@ -1,20 +1,17 @@
 import axios from 'axios'
 
-function getPosts () {
-  axios.get('http://localhost:8008/posts')
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
 function signUp (user) {
-  axios.post('http://localhost:8008/users', user)
+  return axios.get('http://localhost:8008/users?email=' + user.email)
     .then(response => {
-      console.log(response.data)
+      if (response.data.length > 0) {
+        throw new Error ('Такой пользователь уже существует.')
+      } else {
+        axios.post('http://localhost:8008/users', user)
+        alert('Зарегестрирован.')
+        window.location.href = '/signin'
+      }
     })
 }
 export default {
-  getPosts, signUp
+  signUp
 }

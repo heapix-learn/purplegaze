@@ -62,7 +62,6 @@
         </div>
       </form>
     </div>
-    <button @click="getPosts">get posts</button>
   </div>
 </template>
 
@@ -82,9 +81,6 @@ export default {
     }
   },
   methods: {
-    getPosts () {
-      api.getPosts()
-    },
     goSignIn () {
       this.$router.push('/signin')
     },
@@ -122,6 +118,10 @@ export default {
 
       if (!this.errors.length) {
         api.signUp(this.user)
+          .catch(err => {
+            console.error(err)
+            this.errors.push('Такой пользователь уже существует')
+          })
       }
 
       e.preventDefault()

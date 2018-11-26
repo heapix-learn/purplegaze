@@ -47,6 +47,20 @@
       "email": "piggy13@gmail.com",
       "password": "123",
       "id": 5
+    },
+    {
+      "firstName": "Test",
+      "lastName": "Testov",
+      "email": "test@mail.ru",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "firstName": "cvcb",
+      "lastName": "bcb",
+      "email": "kabar@mail.ru",
+      "password": "bcbc",
+      "id": 7
     }
   ]
 }
