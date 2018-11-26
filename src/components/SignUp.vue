@@ -120,7 +120,7 @@ export default {
         api.signUp(this.user)
           .catch(err => {
             console.error(err)
-            this.errors.push('Такой пользователь уже существует')
+            this.errors.push('Такой пользователь уже существует.')
           })
       }
 
