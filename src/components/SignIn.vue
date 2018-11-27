@@ -1,7 +1,7 @@
 <template>
   <div class="signup-main">
     <div class="row signup-block">
-      <h1 class="title">Sign in</h1>
+      <h1 class="title">{{ $t("buttons.login") }}</h1>
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s12">
@@ -10,7 +10,7 @@
                    class="validate"
                    v-model="user.email"
                    @input="clearErrors">
-            <label for="email">Email</label>
+            <label for="email">{{ $t("signup.email") }}</label>
           </div>
         </div>
         <div class="row">
@@ -21,7 +21,7 @@
               v-model="user.password"
               @input="clearErrors"
             >
-            <label for="password">Password</label>
+            <label for="password">{{ $t("signup.password") }}</label>
           </div>
         </div>
         <div class="error-block" :class="{'error-block--visible': errors.length}">
@@ -36,8 +36,10 @@
           <a class="waves-effect waves-light btn button-sign"
              @click="checkForm"
              :disabled="errors.length > 0"
-          >Sign in!</a>
-          <a class="waves-effect waves-light btn button-login" @click="goSignUp">Create account</a>
+          >{{ $t("buttons.login") }}</a>
+          <a class="waves-effect waves-light btn button-login"
+             @click="goSignUp"
+          >{{ $t("buttons.createAcc") }}</a>
         </div>
       </form>
     </div>
