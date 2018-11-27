@@ -11,5 +11,56 @@
   },
   "protected": {
     "meow": "I'm protected"
-  }
+  },
+  "users": [
+    {
+      "firstName": "Sasha",
+      "lastName": "Grey",
+      "email": "hotchik@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "firstName": "Roma",
+      "lastName": "Zverb",
+      "email": "romkaz@mail.ru",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "johndoe@gmail.com",
+      "password": "12345",
+      "id": 3
+    },
+    {
+      "firstName": "Bugs",
+      "lastName": "Bunny",
+      "email": "carrot13@mail.ru",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "firstName": "Piggy",
+      "lastName": "Ponk",
+      "email": "piggy13@gmail.com",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "firstName": "Test",
+      "lastName": "Testov",
+      "email": "test@mail.ru",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "firstName": "cvcb",
+      "lastName": "bcb",
+      "email": "kabar@mail.ru",
+      "password": "bcbc",
+      "id": 7
+    }
+  ]
 }
