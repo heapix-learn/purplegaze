@@ -5,7 +5,11 @@
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate" v-model="email" @input="clearErrors">
+            <input id="email"
+                   type="email"
+                   class="validate"
+                   v-model="user.email"
+                   @input="clearErrors">
             <label for="email">Email</label>
           </div>
         </div>
@@ -14,7 +18,7 @@
             <input id="password"
               type="password"
               class="validate"
-              v-model="password"
+              v-model="user.password"
               @input="clearErrors"
             >
             <label for="password">Password</label>
@@ -41,13 +45,16 @@
 </template>
 
 <script>
+import api from '@/api'
 export default {
   name: 'SignIn',
   data () {
     return {
       errors: [],
-      email: '',
-      password: ''
+      user: {
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
@@ -57,17 +64,21 @@ export default {
     checkForm (e) {
       this.errors = []
 
-      if (!this.password) {
+      if (!this.user.password) {
         this.errors.push('Укажите пароль.')
       }
-      if (!this.email) {
+      if (!this.user.email) {
         this.errors.push('Укажите электронную почту.')
-      } else if (!this.validEmail(this.email)) {
+      } else if (!this.validEmail(this.user.email)) {
         this.errors.push('Укажите корректный адрес электронной почты.')
       }
 
       if (!this.errors.length) {
-        return alert('Has been registered!')
+        api.signIn(this.user)
+          .catch(err => {
+            console.error(err)
+            this.errors.push('Вы ввели неверные почту или пароль.')
+          })
       }
 
       e.preventDefault()

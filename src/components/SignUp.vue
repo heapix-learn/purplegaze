@@ -8,7 +8,7 @@
             <input id="first_name"
                    type="text"
                    class="validate"
-                   v-model="firstName"
+                   v-model="user.firstName"
                    @input="clearErrors"
             >
             <label for="first_name">First Name</label>
@@ -17,7 +17,7 @@
             <input id="last_name"
                    type="text"
                    class="validate"
-                   v-model="lastName"
+                   v-model="user.lastName"
                    @input="clearErrors"
             >
             <label for="last_name">Last Name</label>
@@ -28,7 +28,7 @@
             <input id="email"
                    type="email"
                    class="validate"
-                   v-model="email"
+                   v-model="user.email"
                    @input="clearErrors"
             >
             <label for="email">Email</label>
@@ -39,7 +39,7 @@
             <input id="password"
                    type="password"
                    class="validate"
-                   v-model="password"
+                   v-model="user.password"
                    @input="clearErrors"
             >
             <label for="password">Password</label>
@@ -66,15 +66,18 @@
 </template>
 
 <script>
+import api from '@/api'
 export default {
   name: 'SignUp',
   data () {
     return {
       errors: [],
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
+      user: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
@@ -84,37 +87,41 @@ export default {
     checkForm (e) {
       this.errors = []
 
-      if (!this.firstName) {
+      if (!this.user.firstName) {
         this.errors.push('Укажите имя.')
-      } else if (this.firstName.length < 2) {
+      } else if (this.user.firstName.length <= 2) {
         this.errors.push('Имя должно быть не короче 2-х символов.')
-      } else if (this.firstName.replace(/\s/g, '') === '') {
+      } else if (this.user.firstName.replace(/\s/g, '') === '') {
         this.errors.push('Имя не должно содержать пробелы.')
-      } else if (this.firstName.indexOf([0 - 9])) {
+      } else if (!this.user.firstName.indexOf([0 - 9])) {
         this.errors.push('Имя не должно содержать цифры.')
       }
 
-      if (!this.lastName) {
+      if (!this.user.lastName) {
         this.errors.push('Укажите фамилию.')
-      } else if (this.lastName.length < 2) {
+      } else if (this.user.lastName.length <= 2) {
         this.errors.push('Фамилия должна быть не короче 2-х символов.')
-      } else if (this.lastName.replace(/\s/g, '') === '') {
+      } else if (this.user.lastName.replace(/\s/g, '') === '') {
         this.errors.push('Фамилия не должна содержать пробелы.')
-      } else if (this.firstName.indexOf([0 - 9])) {
+      } else if (!this.user.lastName.indexOf([0 - 9])) {
         this.errors.push('Фамилия не должна содержать цифры.')
       }
 
-      if (!this.password) {
+      if (!this.user.password) {
         this.errors.push('Укажите пароль.')
       }
-      if (!this.email) {
+      if (!this.user.email) {
         this.errors.push('Укажите электронную почту.')
-      } else if (!this.validEmail(this.email)) {
+      } else if (!this.validEmail(this.user.email)) {
         this.errors.push('Укажите корректный адрес электронной почты.')
       }
 
       if (!this.errors.length) {
-        return alert('Has been registered!')
+        api.signUp(this.user)
+          .catch(err => {
+            console.error(err)
+            this.errors.push('Такой пользователь уже существует.')
+          })
       }
 
       e.preventDefault()
