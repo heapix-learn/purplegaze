@@ -1,7 +1,7 @@
 <template>
   <div class="signup-main">
     <div class="row signup-block">
-      <h1 class="title">Sign up</h1>
+      <h1 class="title">{{ $t("buttons.signUp") }}</h1>
       <form class="col s12 form">
         <div class="row">
           <div class="input-field col s6">
@@ -11,7 +11,7 @@
                    v-model="user.firstName"
                    @input="clearErrors"
             >
-            <label for="first_name">First Name</label>
+            <label for="first_name">{{ $t("signup.firstName") }}</label>
           </div>
           <div class="input-field col s6">
             <input id="last_name"
@@ -20,7 +20,7 @@
                    v-model="user.lastName"
                    @input="clearErrors"
             >
-            <label for="last_name">Last Name</label>
+            <label for="last_name">{{ $t("signup.lastName") }}</label>
           </div>
         </div>
         <div class="row">
@@ -31,7 +31,7 @@
                    v-model="user.email"
                    @input="clearErrors"
             >
-            <label for="email">Email</label>
+            <label for="email">{{ $t("signup.email") }}</label>
           </div>
         </div>
         <div class="row">
@@ -42,14 +42,14 @@
                    v-model="user.password"
                    @input="clearErrors"
             >
-            <label for="password">Password</label>
+            <label for="password">{{ $t("signup.password") }}</label>
           </div>
         </div>
         <div class="error-block" :class="{'error-block--visible': errors.length}">
           <p v-if="errors.length">
-            <b>Пожалуйста исправьте указанные ошибки:</b>
+            <b>{{ $t("errors.title") }}</b>
           <ul>
-            <li v-for="error in errors" :key="error">{{ error }}</li>
+            <li v-for="error in errors" :key="error">{{ $t(error) }}</li>
           </ul>
           </p>
         </div>
@@ -57,8 +57,10 @@
           <a class="waves-effect waves-light btn button-sign"
              @click="checkForm"
              :disabled="errors.length > 0"
-          >Sign up!</a>
-          <a class="waves-effect waves-light btn button-login" @click="goSignIn">Login instead</a>
+          >{{ $t("buttons.signUp") }}</a>
+          <a class="waves-effect waves-light btn button-login"
+             @click="goSignIn"
+          >{{ $t("buttons.login") }}</a>
         </div>
       </form>
     </div>
@@ -86,41 +88,40 @@ export default {
     },
     checkForm (e) {
       this.errors = []
-
       if (!this.user.firstName) {
-        this.errors.push('Укажите имя.')
+        this.errors.push('errors.enterName')
       } else if (this.user.firstName.length <= 2) {
-        this.errors.push('Имя должно быть не короче 2-х символов.')
+        this.errors.push('errors.symbolName')
       } else if (this.user.firstName.replace(/\s/g, '') === '') {
-        this.errors.push('Имя не должно содержать пробелы.')
-      } else if (!this.user.firstName.indexOf([0 - 9])) {
-        this.errors.push('Имя не должно содержать цифры.')
+        this.errors.push('errors.spacesName')
+      } else if (!this.validName(this.user.firstName)) {
+        this.errors.push('errors.validName')
       }
 
       if (!this.user.lastName) {
-        this.errors.push('Укажите фамилию.')
+        this.errors.push('errors.enterLastName')
       } else if (this.user.lastName.length <= 2) {
-        this.errors.push('Фамилия должна быть не короче 2-х символов.')
+        this.errors.push('errors.symbolName')
       } else if (this.user.lastName.replace(/\s/g, '') === '') {
-        this.errors.push('Фамилия не должна содержать пробелы.')
-      } else if (!this.user.lastName.indexOf([0 - 9])) {
-        this.errors.push('Фамилия не должна содержать цифры.')
+        this.errors.push('errors.spacesName')
+      } else if (!this.validLastName(this.user.lastName)) {
+        this.errors.push('errors.validLastName')
       }
 
       if (!this.user.password) {
-        this.errors.push('Укажите пароль.')
+        this.errors.push('errors.password')
       }
       if (!this.user.email) {
-        this.errors.push('Укажите электронную почту.')
+        this.errors.push('errors.email')
       } else if (!this.validEmail(this.user.email)) {
-        this.errors.push('Укажите корректный адрес электронной почты.')
+        this.errors.push('errors.validEmail')
       }
 
       if (!this.errors.length) {
         api.signUp(this.user)
           .catch(err => {
             console.error(err)
-            this.errors.push('Такой пользователь уже существует.')
+            this.errors.push('errors.exUser')
           })
       }
 
@@ -130,6 +131,14 @@ export default {
       // eslint-disable-next-line
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       return re.test(email)
+    },
+    validName (firstName) {
+      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
+      return reg.test(firstName)
+    },
+    validLastName (lastName) {
+      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
+      return reg.test(lastName)
     },
     clearErrors () {
       this.errors = []
@@ -162,7 +171,7 @@ export default {
   }
 
   .error-block {
-    width: 400px;
+    width: 450px;
     height: 126px;
     margin: auto;
     display: flex;
@@ -184,12 +193,12 @@ export default {
   }
 
   .button-sign {
-    width: 10rem;
-    margin-right: 6rem;
+    width: 20rem;
+    margin-right: 1rem;
   }
 
   .button-login {
     width: 20rem;
-    margin-left: 6rem;
+    margin-left: 1rem;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="app-header">
-      <router-link to="/signup" class="app-header-link">sign up</router-link>
-      <router-link to="/signin" class="app-header-link">sign in</router-link>
+      <router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link>
+      <router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link>
     </div>
 </template>
 
