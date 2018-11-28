@@ -122,7 +122,7 @@ export default {
   }
 
   .error-block {
-    width: 400px;
+    width: 450px;
     height: 78px;
     margin: auto;
     display: flex;

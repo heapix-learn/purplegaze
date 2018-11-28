@@ -94,8 +94,8 @@ export default {
         this.errors.push('errors.symbolName')
       } else if (this.user.firstName.replace(/\s/g, '') === '') {
         this.errors.push('errors.spacesName')
-      } else if (this.validName(this.user.firstName)) {
-        this.errors.push('errors.numbersName')
+      } else if (!this.validName(this.user.firstName)) {
+        this.errors.push('errors.validName')
       }
 
       if (!this.user.lastName) {
@@ -104,8 +104,8 @@ export default {
         this.errors.push('errors.symbolName')
       } else if (this.user.lastName.replace(/\s/g, '') === '') {
         this.errors.push('errors.spacesName')
-      } else if (this.validLastName(this.user.lastName)) {
-        this.errors.push('errors.numbersLast')
+      } else if (!this.validLastName(this.user.lastName)) {
+        this.errors.push('errors.validLastName')
       }
 
       if (!this.user.password) {
@@ -133,13 +133,11 @@ export default {
       return re.test(email)
     },
     validName (firstName) {
-      // eslint-disable-next-line
-      const reg = /([- 0-9_@]+)/
+      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
       return reg.test(firstName)
     },
     validLastName (lastName) {
-      // eslint-disable-next-line
-      const reg = /([- 0-9_@]+)/
+      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
       return reg.test(lastName)
     },
     clearErrors () {
@@ -173,7 +171,7 @@ export default {
   }
 
   .error-block {
-    width: 400px;
+    width: 450px;
     height: 126px;
     margin: auto;
     display: flex;
