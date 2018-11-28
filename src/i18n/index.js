@@ -11,6 +11,7 @@ const messages = {
       password: 'Password'
     },
     buttons: {
+      lang: 'ру',
       signUp: 'sign up',
       login: 'login instead',
       signIn: 'sign in',
@@ -25,6 +26,7 @@ const messages = {
       password: 'Пароль'
     },
     buttons: {
+      lang: 'en',
       signUp: 'Зарегестрироваться',
       login: 'Войти',
       createAcc: 'Создать аккаунт'
@@ -32,14 +34,7 @@ const messages = {
   }
 }
 
-const i18n = new VueI18n({
-  locale: 'en', // set locale
-  messages // set locale messages
-})
-
 export default new VueI18n({
   locale: 'en', // set locale
   messages // set locale messages
 })
-
-i18n.locale = 'ru'
