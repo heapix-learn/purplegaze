@@ -26,9 +26,9 @@
         </div>
         <div class="error-block" :class="{'error-block--visible': errors.length}">
           <p v-if="errors.length">
-            <b>Пожалуйста исправьте указанные ошибки:</b>
+            <b>{{ $t("errors.title") }}</b>
           <ul>
-            <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+            <li v-for="error in errors" v-bind:key="error">{{ $t(error) }}</li>
           </ul>
           </p>
         </div>
@@ -67,19 +67,19 @@ export default {
       this.errors = []
 
       if (!this.user.password) {
-        this.errors.push('Укажите пароль.')
+        this.errors.push('errors.password')
       }
       if (!this.user.email) {
-        this.errors.push('Укажите электронную почту.')
+        this.errors.push('errors.email')
       } else if (!this.validEmail(this.user.email)) {
-        this.errors.push('Укажите корректный адрес электронной почты.')
+        this.errors.push('errors.validEmail')
       }
 
       if (!this.errors.length) {
         api.signIn(this.user)
           .catch(err => {
             console.error(err)
-            this.errors.push('Вы ввели неверные почту или пароль.')
+            this.errors.push('errors.validEnter')
           })
       }
 
