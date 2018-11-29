@@ -15,7 +15,8 @@ const messages = {
       signUp: 'sign up',
       login: 'login',
       signIn: 'sign in',
-      createAcc: 'create account'
+      createAcc: 'create account',
+      logOut: 'logout'
     },
     errors: {
       title: 'Please correct the error:',
@@ -43,7 +44,8 @@ const messages = {
       lang: 'en',
       signUp: 'Зарегестрироваться',
       login: 'Войти',
-      createAcc: 'Создать аккаунт'
+      createAcc: 'Создать аккаунт',
+      logOut: 'Выйти'
     },
     errors: {
       title: 'Пожалуйста исправьте указанные ошибки:',

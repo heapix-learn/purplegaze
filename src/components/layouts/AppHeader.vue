@@ -2,16 +2,21 @@
     <div class="app-header">
       <div class="imageBlock">
         <img src="../../assets/haze.png" class="image"/>
+        <p>{{isAuth}}</p>
       </div>
       <p v-if="isAuth" class="currentUser">{{title}}</p>
-        <a v-if="!isAuth" class="waves-effect waves-light btn button-sign loginButton"
-           @click=""
+        <a v-if="!isAuth"
+           class="waves-effect waves-light btn button-sign loginButton"
         ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
-        <a class="waves-effect waves-light btn button-sign regButton"
-           @click=""
+
+      <a v-if="isAuth"
+         class="waves-effect waves-light btn button-sign regButton"
+         @click="logOut"
+      ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
+
+        <a v-if="!isAuth" class="waves-effect waves-light btn button-sign regButton"
         ><router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link></a>
       </div>
-    </div>
 </template>
 
 <script>
@@ -26,6 +31,11 @@ export default {
     isAuth () {
       this.title = this.$store.getters['user/isAuth']
       return this.$store.getters['user/isAuth']
+    }
+  },
+  methods: {
+    logOut () {
+      return this.$store.dispatch('user/logOut')
     }
   }
 }

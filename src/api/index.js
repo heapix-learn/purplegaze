@@ -11,17 +11,16 @@ function signUp (user) {
 }
 
 function signIn (user) {
-  return axios.get('http://localhost:8008/users?mail=' + user.email + '&password=' + user.password)
+  return axios.post('http://localhost:8008/signin', user)
     .then(response => {
-      if (response.data.length > 0) {
-        localStorage.jwt = '1314'
-        localStorage.userId = response.data[0].id
+        localStorage.jwt = response.data.jwt
         return response
-      } else {
-        throw new Error('errors.validEnter')
-      }
     })
 }
+
+function logOut() {
+  localStorage.jwt = ''
+}
 export default {
-  signUp, signIn
+  signUp, signIn, logOut
 }

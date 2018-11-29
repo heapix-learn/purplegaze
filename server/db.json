@@ -75,6 +75,13 @@
       "email": "aldo136@mail.ru",
       "password": "123",
       "id": 9
+    },
+    {
+      "firstName": "Asku",
+      "lastName": "Asama",
+      "email": "arr12@mail.ru",
+      "password": "123",
+      "id": 10
     }
   ]
 }
