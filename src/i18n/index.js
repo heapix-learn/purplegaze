@@ -13,7 +13,7 @@ const messages = {
     buttons: {
       lang: 'ру',
       signUp: 'sign up',
-      login: 'login instead',
+      login: 'login',
       signIn: 'sign in',
       createAcc: 'create account'
     },
@@ -21,13 +21,13 @@ const messages = {
       title: 'Please correct the error:',
       enterName: 'Enter a name.',
       enterLastName: 'Enter a last name.',
-      symbolName: 'The name must be no shorter than 2 characters.',
+      symbolName: 'The name must be no shorter than 3 characters.',
       spacesName: 'The name must not contain spaces.',
       validName: 'The name must not contain numbers or spec. characters.',
       validLastName: 'The last name must not contain numbers or spec. characters.',
       email: 'Enter a email.',
       validEmail: 'Enter a valid email address.',
-      password: 'Enter a password',
+      password: 'Enter a password.',
       exUser: 'This user already exists.',
       validEnter: 'You entered an invalid email or password.'
     }
@@ -49,7 +49,7 @@ const messages = {
       title: 'Пожалуйста исправьте указанные ошибки:',
       enterName: 'Укажите имя.',
       enterLastName: 'Укажите фамилию.',
-      symbolName: 'Имя не должно быть меньше 2-х символов.',
+      symbolName: 'Имя не должно быть меньше 3-х символов.',
       spacesName: 'Имя не должно содержать пробелы.',
       validName: 'имя не должно содержать цифры или спец. символы.',
       validLastName: 'Фамилия не должна содержать цифры или спец. символы.',

@@ -90,7 +90,7 @@ export default {
       this.errors = []
       if (!this.user.firstName) {
         this.errors.push('errors.enterName')
-      } else if (this.user.firstName.length <= 2) {
+      } else if (this.user.firstName.length < 3) {
         this.errors.push('errors.symbolName')
       } else if (this.user.firstName.replace(/\s/g, '') === '') {
         this.errors.push('errors.spacesName')
@@ -100,7 +100,7 @@ export default {
 
       if (!this.user.lastName) {
         this.errors.push('errors.enterLastName')
-      } else if (this.user.lastName.length <= 2) {
+      } else if (this.user.lastName.length < 3) {
         this.errors.push('errors.symbolName')
       } else if (this.user.lastName.replace(/\s/g, '') === '') {
         this.errors.push('errors.spacesName')
@@ -119,6 +119,9 @@ export default {
 
       if (!this.errors.length) {
         api.signUp(this.user)
+          .then(response => {
+            this.$router.push('/signin')
+          })
           .catch(err => {
             console.error(err)
             this.errors.push('errors.exUser')
@@ -133,11 +136,11 @@ export default {
       return re.test(email)
     },
     validName (firstName) {
-      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
+      const reg = /[A-Za-zА-Яа-яёЁ]$/
       return reg.test(firstName)
     },
     validLastName (lastName) {
-      const reg = /[A-Za-zА-Яа-яёЁ]{3,}$/
+      const reg = /[A-Za-zА-Яа-яёЁ]$/
       return reg.test(lastName)
     },
     clearErrors () {

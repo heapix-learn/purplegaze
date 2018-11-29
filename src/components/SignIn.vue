@@ -76,11 +76,16 @@ export default {
       }
 
       if (!this.errors.length) {
+        this.$store.dispatch('user/logIn')
+        console.log(this.$store.dispatch('user/logIn'))
         api.signIn(this.user)
-          .catch(err => {
-            console.error(err)
-            this.errors.push('errors.validEnter')
+          .then(response => {
+            this.$router.push('/')
           })
+          .catch(err => {
+                console.error(err)
+                this.errors.push('errors.validEnter')
+              })
       }
 
       e.preventDefault()
