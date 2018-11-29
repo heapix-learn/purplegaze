@@ -14,6 +14,7 @@ function isProtected(req) {
 };
 
 server.use(jsonServer.bodyParser)
+server.use(middlewares);
 
 server.post('/signin', (req, res, next) => {
   const {email, password} = req.body;
@@ -61,7 +62,6 @@ server.get('/profile', (req, res, next) => {
   }
 })
 
-server.use(middlewares);
 server.use((req, res, next) => {
   if (isProtected(req)) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[1].slice(0, 4) === '1314') {
