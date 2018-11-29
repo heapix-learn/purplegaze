@@ -83,9 +83,9 @@ export default {
             this.$router.push('/')
           })
           .catch(err => {
-                console.error(err)
-                this.errors.push('errors.validEnter')
-              })
+            console.error(err)
+            this.errors.push('errors.validEnter')
+          })
       }
 
       e.preventDefault()

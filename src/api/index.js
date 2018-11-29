@@ -1,14 +1,12 @@
 import axios from 'axios'
 
 function signUp (user) {
-  return axios.get('http://localhost:8008/users?email=' + user.email)
+  return axios.post('http://localhost:8008/signup', user)
     .then(response => {
-      if (response.data.length > 0) {
-        throw new Error('errors.exUser')
-      } else {
-        axios.post('http://localhost:8008/users', user)
-        return response
-      }
+      return response
+    })
+    .catch(() => {
+      throw new Error('errors.exUser')
     })
 }
 
