@@ -21,6 +21,10 @@ function signIn (user) {
 function logOut() {
   localStorage.jwt = ''
 }
+
+function getProfile () {
+  return axios.get('http://localhost:8008/profile')
+}
 export default {
   signUp, signIn, logOut
 }

@@ -2,7 +2,6 @@
     <div class="app-header">
       <div class="imageBlock">
         <img src="../../assets/haze.png" class="image"/>
-        <p>{{isAuth}}</p>
       </div>
       <p v-if="isAuth" class="currentUser">{{title}}</p>
         <a v-if="!isAuth"

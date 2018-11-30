@@ -4,6 +4,7 @@
     <app-main>
       <router-view/>
     </app-main>
+    <hello-world></hello-world>
     <app-footer v-if="!isSignPage"/>
   </div>
 </template>

@@ -1,7 +1,8 @@
 export default {
   namespaced: true,
   state: {
-    isAuth: false
+    isAuth: false,
+    user: null
   },
   getters: {
     isAuth: state => {
@@ -14,6 +15,11 @@ export default {
     },
     logOut (state) {
       state.isAuth = false
+      state.user = null
+    },
+    authUser (state, payload) {
+      state.user = payload
+      console.log(payload)
     }
   },
   actions: {
