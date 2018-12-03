@@ -28,8 +28,13 @@ export default {
   },
   computed: {
     isAuth () {
-      this.title = this.$store.getters['user/isAuth']
-      return this.$store.getters['user/isAuth']
+      if (this.$store.getters['user/isAuth'] === true) {
+        return this.$store.getters['user/user']
+        this.title = this.$store.getters['user/user']
+        console.log('OK this title' + this.title)
+      } else {
+        console.log('Not getters isAuth')
+      }
     }
   },
   methods: {
@@ -61,8 +66,8 @@ export default {
   }
 
   .currentUser {
-    background: red;
-    width: 10rem;
+    background: white;
+    width: 20rem;
   }
 
   .app-header-link {

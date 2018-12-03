@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'AppMain',
   data () {
@@ -17,14 +15,6 @@ export default {
       title: 'Hello! It\'s all users',
       users: []
     }
-  },
-  created () {
-    // return axios.get('http://localhost:8008/users')
-    //   .then(response => {
-    //     this.users = response.data
-    //     console.log(response.data)
-    //   })
-
   }
 }
 </script>

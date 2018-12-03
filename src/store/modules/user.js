@@ -7,6 +7,9 @@ export default {
   getters: {
     isAuth: state => {
       return state.isAuth
+    },
+    user: state => {
+      return state.user
     }
   },
   mutations: {
@@ -19,7 +22,6 @@ export default {
     },
     authUser (state, payload) {
       state.user = payload
-      console.log(payload)
     }
   },
   actions: {
@@ -28,6 +30,10 @@ export default {
     },
     logOut ({commit}) {
       commit('logOut')
+    },
+    authUser ({commit}, payload) {
+      commit('authUser', payload)
+      console.log('OK ' + payload)
     }
   }
 }

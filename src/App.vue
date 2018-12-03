@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <app-header v-if="!isSignPage"/>
+    <app-header v-if="!isSignPage"></app-header>
     <app-main>
       <router-view/>
     </app-main>
-    <hello-world></hello-world>
     <app-footer v-if="!isSignPage"/>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 import AppHeader from './components/layouts/AppHeader.vue'
 import AppMain from './components/layouts/AppMain.vue'
 import AppFooter from './components/layouts/AppFooter.vue'
@@ -19,6 +20,21 @@ export default {
   computed: {
     isSignPage () {
       return this.$route.path.includes('signup') || this.$route.path.includes('signin')
+    }
+  },
+  mounted () {
+    if (localStorage.jwt !== '' && this.$store.getters['user/isAuth'] === false) {
+      return axios.get('http://localhost:8008/profile', {
+        headers: {
+          'authorization': 'Bearer ' + localStorage.jwt
+        }
+      })
+        .then(response => {
+
+          return this.$store.dispatch('user/authUser', response.data[0])
+        })
+    } else {
+      console.log('Not ok!')
     }
   }
 }
