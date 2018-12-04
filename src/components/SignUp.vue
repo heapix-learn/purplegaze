@@ -120,7 +120,6 @@ export default {
       if (!this.errors.length) {
         api.signUp(this.user)
           .then(response => {
-            console.log(response)
             this.$router.push('/signin')
           })
           .catch(err => {

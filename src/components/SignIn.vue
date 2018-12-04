@@ -79,7 +79,6 @@ export default {
 
       if (!this.errors.length) {
         this.$store.dispatch('user/logIn')
-        console.log(this.$store.dispatch('user/logIn'))
         api.signIn(this.user)
           .then(response => {
             axios.get('http://localhost:8008/profile', {
@@ -88,7 +87,6 @@ export default {
               }
             })
               .then(response => {
-                console.log(response.data[0])
                 return this.$store.dispatch('user/authUser', response.data[0])
               })
             this.$router.push('/')

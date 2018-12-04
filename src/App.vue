@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-if="!isSignPage"></app-header>
+    <app-header v-if="!isSignPage"/>
     <app-main>
       <router-view/>
     </app-main>
@@ -30,16 +30,12 @@ export default {
         }
       })
         .then(response => {
-          return this.$store.dispatch('user/authUser', response.data[0])
-        })
-        .then(response => {
-          return this.$store.dispatch('user/logIn')
+          this.$store.dispatch('user/authUser', response.data[0])
+          this.$store.dispatch('user/logIn')
         })
         .catch(err => {
           console.error(err)
         })
-    } else {
-      console.log('Not ok!')
     }
   }
 }
