@@ -61,6 +61,27 @@
       "email": "kabar@mail.ru",
       "password": "bcbc",
       "id": 7
+    },
+    {
+      "firstName": "Alik",
+      "lastName": "Aldo",
+      "email": "aldo13@mail.ru",
+      "password": "123",
+      "id": 8
+    },
+    {
+      "firstName": "Alik",
+      "lastName": "Aldo",
+      "email": "aldo136@mail.ru",
+      "password": "123",
+      "id": 9
+    },
+    {
+      "firstName": "Asku",
+      "lastName": "Asama",
+      "email": "arr12@mail.ru",
+      "password": "123",
+      "id": 10
     }
   ]
 }

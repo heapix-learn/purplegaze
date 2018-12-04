@@ -48,6 +48,8 @@
 
 <script>
 import api from '@/api'
+import axios from 'axios'
+
 export default {
   name: 'SignIn',
   data () {
@@ -76,7 +78,19 @@ export default {
       }
 
       if (!this.errors.length) {
+        this.$store.dispatch('user/logIn')
         api.signIn(this.user)
+          .then(response => {
+            axios.get('http://localhost:8008/profile', {
+              headers: {
+                'authorization': 'Bearer ' + localStorage.jwt
+              }
+            })
+              .then(response => {
+                return this.$store.dispatch('user/authUser', response.data[0])
+              })
+            this.$router.push('/')
+          })
           .catch(err => {
             console.error(err)
             this.errors.push('errors.validEnter')
