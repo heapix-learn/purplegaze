@@ -13,18 +13,11 @@ function signUp (user) {
 function signIn (user) {
   return axios.post('http://localhost:8008/signin', user)
     .then(response => {
-        localStorage.jwt = response.data.jwt
-        return response
+      localStorage.jwt = response.data.jwt
+      return response
     })
 }
 
-function logOut() {
-  localStorage.jwt = ''
-}
-
-function getProfile () {
-  return axios.get('http://localhost:8008/profile')
-}
 export default {
-  signUp, signIn, logOut
+  signUp, signIn
 }

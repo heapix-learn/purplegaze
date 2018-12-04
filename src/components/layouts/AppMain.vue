@@ -1,7 +1,7 @@
 <template>
     <div class="main">
       <slot>{{title}}</slot>
-      <div v-for="(user, key) in users">
+      <div v-for="(user, key) in users" :key="key">
         {{key}} : {{user.firstName}} {{user.lastName}} | {{user.email}} | {{user.password}} | {{user.id}}
       </div>
     </div>

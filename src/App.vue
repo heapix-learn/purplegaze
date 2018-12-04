@@ -30,8 +30,13 @@ export default {
         }
       })
         .then(response => {
-
           return this.$store.dispatch('user/authUser', response.data[0])
+        })
+        .then(response => {
+          return this.$store.dispatch('user/logIn')
+        })
+        .catch(err => {
+          console.error(err)
         })
     } else {
       console.log('Not ok!')

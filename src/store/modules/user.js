@@ -25,15 +25,14 @@ export default {
     }
   },
   actions: {
-    logIn ({commit}) {
+    logIn ({ commit }) {
       commit('logIn')
     },
-    logOut ({commit}) {
+    logOut ({ commit }) {
       commit('logOut')
     },
-    authUser ({commit}, payload) {
+    authUser ({ commit }, payload) {
       commit('authUser', payload)
-      console.log('OK ' + payload)
     }
   }
 }

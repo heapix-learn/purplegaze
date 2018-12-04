@@ -3,42 +3,41 @@
       <div class="imageBlock">
         <img src="../../assets/haze.png" class="image"/>
       </div>
-      <p v-if="isAuth" class="currentUser">{{title}}</p>
-        <a v-if="!isAuth"
-           class="waves-effect waves-light btn button-sign loginButton"
+      <div v-if="isAuth">
+        <p class="currentUser">{{firstName}}</p>
+        <a class="waves-effect waves-light btn button-sign regButton"
+           @click="logOut"
+        ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
+      </div>
+
+      <div v-if="!isAuth">
+        <a class="waves-effect waves-light btn button-sign loginButton"
         ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
-
-      <a v-if="isAuth"
-         class="waves-effect waves-light btn button-sign regButton"
-         @click="logOut"
-      ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
-
-        <a v-if="!isAuth" class="waves-effect waves-light btn button-sign regButton"
+        <a class="waves-effect waves-light btn button-sign regButton"
         ><router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link></a>
+      </div>
+
       </div>
 </template>
 
 <script>
 export default {
   name: 'AppHeader',
-  data () {
-    return {
-      title: ''
-    }
-  },
   computed: {
     isAuth () {
-      if (this.$store.getters['user/isAuth'] === true) {
-        return this.$store.getters['user/user']
-        this.title = this.$store.getters['user/user']
-        console.log('OK this title' + this.title)
+      return this.$store.getters['user/isAuth']
+    },
+    firstName () {
+      if (this.$store.getters['user/user'] === null) {
+        return ''
       } else {
-        console.log('Not getters isAuth')
+        return this.$store.getters['user/user'].firstName
       }
     }
   },
   methods: {
     logOut () {
+      localStorage.jwt = ''
       return this.$store.dispatch('user/logOut')
     }
   }
@@ -66,8 +65,9 @@ export default {
   }
 
   .currentUser {
+    display: inline-block;
     background: white;
-    width: 20rem;
+    width: 10rem;
   }
 
   .app-header-link {
@@ -75,9 +75,9 @@ export default {
     font-size: 2rem;
   }
 
-  .buttons {
-    margin-right: 5rem;
-  }
+  /*.buttons {*/
+    /*margin-right: 5rem;*/
+  /*}*/
 
   .regButton {
     background: var(--white);
