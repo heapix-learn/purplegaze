@@ -9,10 +9,11 @@
 <script>
 import axios from 'axios'
 import Message from './Message'
+import NewMessage from  './NewMessage'
 
 export default {
   name: 'Messages',
-  components: { Message },
+  components: { Message, NewMessage },
   data () {
     return {
       messages: []
