@@ -1,6 +1,6 @@
 <template>
   <div class="messages-block">
-    <div class="card horizontal" v-for="(message, index) in messages" :key="index">
+    <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
     </div>
   </div>

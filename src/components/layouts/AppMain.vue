@@ -1,15 +1,12 @@
 <template>
     <div class="main">
-      <messages></messages>
+      <slot></slot>
     </div>
 </template>
 
 <script>
-import Messages from '@/components/Messages.vue'
-
 export default {
   name: 'AppMain',
-  components: { Messages },
   data () {
     return {
       title: 'Hello! It\'s AppMain'
