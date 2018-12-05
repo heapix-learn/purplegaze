@@ -12,6 +12,16 @@
   "protected": {
     "meow": "I'm protected"
   },
+  "messages": [
+    {
+      "id": 1,
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sit!"
+    },
+    {
+      "id": 2,
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    }
+  ],
   "users": [
     {
       "firstName": "Sasha",

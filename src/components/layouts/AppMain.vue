@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-      <slot>{{title}}</slot>
+      <slot></slot>
     </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   name: 'AppMain',
   data () {
     return {
-      title: 'Hello! It\'s all users',
+      title: 'Hello! It\'s AppMain'
     }
   }
 }
@@ -20,5 +20,7 @@ export default {
   width: 100%;
   min-height: 80vh;
   background: var(--white);
+  display: flex;
+  justify-content: center;
 }
 </style>
