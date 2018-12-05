@@ -1,15 +1,18 @@
 <template>
     <div class="main">
-      <slot>{{title}}</slot>
+      <messages></messages>
     </div>
 </template>
 
 <script>
+import Messages from '@/components/Messages.vue'
+
 export default {
   name: 'AppMain',
+  components: { Messages },
   data () {
     return {
-      title: 'Hello! It\'s all users',
+      title: 'Hello! It\'s AppMain'
     }
   }
 }
@@ -20,5 +23,7 @@ export default {
   width: 100%;
   min-height: 80vh;
   background: var(--white);
+  display: flex;
+  justify-content: center;
 }
 </style>
