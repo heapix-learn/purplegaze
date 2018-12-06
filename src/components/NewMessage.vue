@@ -9,6 +9,7 @@
                         data-length="120"
                         maxlength="140"
                         v-model="post.text"
+                        @input="clearErrors"
               ></textarea>
               <label for="textarea2" class="label">Text (max: 140)</label>
             </div>
@@ -19,6 +20,7 @@
                      type="text"
                      data-length="10"
                      v-model="post.hashtag"
+                     @input="clearErrors"
               >
               <label for="input_text">#</label>
             </div>
@@ -43,26 +45,53 @@
 </template>
 
 <script>
-  export default {
-    name: "NewMessage",
-    data () {
-      return {
-        errors: [],
-        post: {
-          text: '',
-          hashtag: ''
-        }
-      }
-    },
-    methods: {
-      checkForm (e) {
-        this.errors = []
-        if (!this.post.text) {
-          this.errors.push('Enter text')
-        }
+import axios from 'axios'
+export default {
+  name: 'NewMessage',
+  data () {
+    return {
+      errors: [],
+      post: {
+        text: '',
+        hashtag: ''
       }
     }
+  },
+  methods: {
+    checkForm (e) {
+      this.errors = []
+      if (!this.post.text) {
+        this.errors.push('Enter text')
+      }
+      if (!this.post.hashtag) {
+        this.errors.push('Enter hashtag plz')
+      } else if (!this.isHash(this.post.hashtag)) {
+        this.errors.push('Hashtag must be')
+      }
+      if (!this.errors.length) {
+        axios.post('http://localhost:8008/messages', {
+          text: this.post.text,
+          user_id: localStorage.jwt.substr(4),
+          hashtag: this.post.hashtag.split('#').splice(1)
+        })
+          .then(response => {
+            console.log(response.data)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+      e.preventDefault()
+    },
+    isHash (hashtag) {
+      const reg = /[#]/
+      return reg.test(hashtag)
+    },
+    clearErrors () {
+      this.errors = []
+    }
   }
+}
 </script>
 
 <style scoped>

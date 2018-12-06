@@ -9,7 +9,7 @@
 <script>
 import axios from 'axios'
 import Message from './Message'
-import NewMessage from  './NewMessage'
+import NewMessage from './NewMessage'
 
 export default {
   name: 'Messages',
