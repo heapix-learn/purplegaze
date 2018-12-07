@@ -3,7 +3,7 @@
     <div class="col s12 m7 frame">
         <div class="card-image image-block">
           <img src="../assets/15.png" class="image">
-          <p class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, saepe!</p>
+          <span v-for="(hash, index) in message.hashtag" :key="index">#{{hash}}&nbsp;</span>
         </div>
         <div class="card-stacked" >
           <div class="card-content">

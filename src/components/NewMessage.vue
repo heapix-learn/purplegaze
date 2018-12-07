@@ -63,16 +63,11 @@ export default {
       if (!this.post.text) {
         this.errors.push('Enter text')
       }
-      if (!this.post.hashtag) {
-        this.errors.push('Enter hashtag plz')
-      } else if (!this.isHash(this.post.hashtag)) {
-        this.errors.push('Hashtag must be')
-      }
       if (!this.errors.length) {
         axios.post('http://localhost:8008/messages', {
           text: this.post.text,
           user_id: localStorage.jwt.substr(4),
-          hashtag: this.post.hashtag.split('#').splice(1)
+          hashtag: this.post.hashtag.split(' ')
         })
           .then(response => {
             console.log(response.data)
@@ -85,7 +80,9 @@ export default {
     },
     isHash (hashtag) {
       const reg = /[#]/
+      console.log('lllll',reg.test(hashtag))
       return reg.test(hashtag)
+
     },
     clearErrors () {
       this.errors = []

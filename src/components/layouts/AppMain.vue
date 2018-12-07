@@ -3,7 +3,7 @@
       <a class="waves-effect waves-light btn toNewMessage"
          @click="toNewMessage"
          v-if="!isNewMessage"
-      ><i class="material-icons left">cloud</i>to new-message</a>
+      ><i class="material-icons left">cloud</i>New Message</a>
       <slot></slot>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     isNewMessage () {
-      return this.$route.path.includes('new-message') || this.$store.getters['user/isAuth'] === false
+      return this.$route.path.includes('new-message') || !this.$store.getters['user/isAuth']
     }
   }
 }
