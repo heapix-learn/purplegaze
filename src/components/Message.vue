@@ -36,11 +36,10 @@ export default {
   }
 
   .image-block {
-    display: flex;
+    display: inline-block;
   }
 
   .image {
-    float: left;
     height: 10rem;
     width: 10rem;
   }

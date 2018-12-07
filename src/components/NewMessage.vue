@@ -37,7 +37,7 @@
             <a class="waves-effect waves-light btn"
                @click="checkForm"
                :disabled="errors.length > 0"
-            >post</a>
+            >{{ $t("buttons.post")}}</a>
           </div>
         </form>
       </div>
