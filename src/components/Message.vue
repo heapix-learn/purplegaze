@@ -1,8 +1,9 @@
 <template>
   <div class="message-block">
-    <div class="col s12 m7">
-        <div class="card-image">
-          <img src="../assets/1.png" class="image">
+    <div class="col s12 m7 frame">
+        <div class="card-image image-block">
+          <img src="../assets/15.png" class="image">
+          <span v-for="(hash, index) in message.hashtag" :key="index">#{{hash}}&nbsp;</span>
         </div>
         <div class="card-stacked" >
           <div class="card-content">
@@ -30,8 +31,18 @@ export default {
 </script>
 
 <style scoped>
+  .frame {
+    width: 50rem;
+  }
+
+  .image-block {
+    display: flex;
+  }
+
   .image {
+    float: left;
     height: 10rem;
     width: 10rem;
   }
+
 </style>

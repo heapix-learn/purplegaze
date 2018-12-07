@@ -1,5 +1,9 @@
 <template>
     <div class="main">
+      <a class="waves-effect waves-light btn toNewMessage"
+         @click="toNewMessage"
+         v-if="!isNewMessage"
+      ><i class="material-icons left">cloud</i>New Message</a>
       <slot></slot>
     </div>
 </template>
@@ -11,6 +15,16 @@ export default {
     return {
       title: 'Hello! It\'s AppMain'
     }
+  },
+  methods: {
+    toNewMessage () {
+      this.$router.push('/new-message')
+    }
+  },
+  computed: {
+    isNewMessage () {
+      return this.$route.path.includes('new-message') || !this.$store.getters['user/isAuth']
+    }
   }
 }
 </script>
@@ -20,7 +34,15 @@ export default {
   width: 100%;
   min-height: 80vh;
   background: var(--white);
+  display: block;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
+
+  .toNewMessage {
+    position: fixed;
+    top: 15rem;
+    right: 5rem;
+  }
 </style>
