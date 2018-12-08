@@ -39,6 +39,17 @@
       "lastName": "Aldo",
       "date": "8.12.2018",
       "id": 2
+    },
+    {
+      "text": "test",
+      "user_id": "5",
+      "hashtag": [
+        "vcvx"
+      ],
+      "firstName": "Piggy",
+      "lastName": "Ponk",
+      "date": "8.12.2018",
+      "id": 3
     }
   ],
   "comments": [
@@ -113,6 +124,12 @@
       "author": "Test Testov",
       "text": "",
       "id": 13
+    },
+    {
+      "message_id": 2,
+      "author": "Test Testov",
+      "text": "bjhbjbl",
+      "id": 14
     }
   ],
   "users": [

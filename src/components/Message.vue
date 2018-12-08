@@ -4,14 +4,19 @@
       <div class="card-image upper-block">
         <img src="../assets/15.png" class="image">
         <div class="upper-block-maindate">
-          <span>{{ message.firstName }} &nbsp;</span>
-          <span>{{ message.lastName }}<br></span>
+          <router-link :to="{name:'UserMessages', params: {user_id: message.user_id, user_name: message.firstName}}">
+            <span>{{ message.firstName }} &nbsp;</span>
+            <span>{{ message.lastName }}<br></span>
+          </router-link>
           <span>{{ message.date}}</span>
           <div class="upper-block-hashtags">
               <span v-for="(hash, index) in message.hashtag" :key="index">
-               <span v-if="isHash(hash)">
+
+               <router-link :to="{name: 'HashtagMessages', params: {hashtag: hash}}">
+                 <span v-if="isHash(hash)">
                 #{{hash}}&nbsp;
                  </span>
+               </router-link>
               </span>
           </div>
         </div>

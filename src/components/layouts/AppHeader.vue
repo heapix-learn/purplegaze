@@ -4,7 +4,11 @@
         <img src="../../assets/haze.png" class="image" @click="home"/>
       </div>
       <div v-if="isAuth">
-        <p class="currentUser">{{firstName}}</p>
+        <p class="currentUser"></p>
+        <a class="waves-effect waves-light btn button-sign regButton"
+           @click="toUserInfo"
+        ><router-link to="/" class="app-header-link">{{firstName}}</router-link></a>
+
         <a class="waves-effect waves-light btn button-sign regButton"
            @click="logOut"
         ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
@@ -42,6 +46,9 @@ export default {
     },
     home () {
       this.$router.push('/')
+    },
+    toUserInfo () {
+      this.$router.push('/user-info')
     }
   }
 }
