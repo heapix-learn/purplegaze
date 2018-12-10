@@ -1,35 +1,51 @@
 <template>
-  <div class="UserInfo">
-    <div class="row">
-      <div class="">
-        <div class="card">
-          <div class="card-image">
-            <img src="../../assets/forest.jpg" height="532" width="800"/><span class="card-title name">{{user.firstName}} {{user.lastName}}</span>
+  <div class="user-info">
+    <div class="row user-info__row">
+      <div class="user-info__row__block">
+        <div class="card user-info__row__block__card">
+          <div class="user-info__row__block__card__card-image">
+            <img class="user-info__row__block__card__card-image__image" src="../../assets/forest.jpg" height="532"
+                 width="800"/><span class="card-title user-info__row__block__card__card-image__name">{{user.firstName}} {{user.lastName}}</span>
           </div>
-          <div class="card-content">
+          <div class="card-content user-info__row__block__card__content">
             <p>user First Name: {{user.firstName}}</p>
             <p>user Last Name: {{user.lastName}}</p>
             <p>user Email: {{user.email}}</p>
           </div>
-          <a class="card-action-icons comment" @click="editUser()"><i class="medium material-icons">comment</i></a>
-          <div class="editUser" v-if="isEdit">
-            <div class="row">
-              <form class="col s6">
-                <div class="row">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_firstName" type="text" class="validate">
-                    <label for="icon_firstName">First Name</label>
+          <a @click="openFormUser()"><i
+            class="medium material-icons user-info__row__block__card__content__info__comment">edit</i></a>
+          <div class="user-info__row__block__card__content__info">
+            <div class="user-info__row__block__card__content__info__comment__edit-user" v-if="isEdit">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="first_name"
+                             type="text"
+                             class="validate"
+                             v-model="newFirstName"
+                      >
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="last_name" type="text" class="validate">
+                      <label for="last_name">Last Name</label>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_lastName" type="text" class="validate">
-                    <label for="icon_lastName">Last Name</label>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="password" type="password" class="validate">
+                      <label for="password">Password</label>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
+              <div user-info__row__block__card__content__info__comment__edit-user__button>
+                <a
+                  class="waves-effect waves-light btn button-sign user-info__row__block__card__content__info__comment__edit-user__button"
+                  @click="editUser()"
+                >edit user</a>
+              </div>
             </div>
           </div>
         </div>
@@ -39,44 +55,93 @@
 </template>
 
 <script>
-export default {
-  name: 'UserInfo',
-  data () {
-    return {
-      user: {},
-      isEdit: false
-    }
-  },
-  created () {
-    this.userInfo()
-  },
-  methods: {
-    editUser () {
-      if (this.isEdit) {
-        this.isEdit = false
-      } else {
-        this.isEdit = true
+  import axios from 'axios'
+  export default {
+    name: 'UserInfo',
+    data() {
+      return {
+        user: {},
+        newFirstName: '',
+        isEdit: false
       }
     },
-    userInfo () {
-      this.user = this.$store.getters['user/user']
+    created() {
+      this.userInfo()
+    },
+    methods: {
+      async userInfo() {
+        this.user = await this.$store.getters['user/user']
+      },
+      openFormUser() {
+        if (this.isEdit) {
+          this.isEdit = false
+        } else {
+          this.isEdit = true
+          this.newFirstName = this.user.firstName
+        }
+      },
+      editUser() {
+        if (this.newFirstName !== this.user.firstName) {
+          this.user.firstName = this.newFirstName
+          axios.put('http://localhost:8008/users/' + this.user)
+            .then(response => {
+              console.log(response.data)
+            })
+        }
+      }
     }
   }
-}
 </script>
 
 <style scoped>
-  .UserInfo {
+  .user-info {
     height: 80vh;
     width: 100vw;
   }
 
-  .card {
+  .user-info__row__block__card {
     height: 80vh;
+    margin: 0;
   }
 
-  .name {
+  .user-info__row__block__card__content {
+    padding: 1rem;
+  }
+
+  .user-info__row__block__card__card-image__image {
+    width: 100%;
+  }
+
+  .user-info__row__block__card__card-image__name {
+    position: absolute;
+    left: 1rem;
+    top: 40rem;
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
     background: white;
     color: black !important;
+  }
+
+  .user-info__row__block__card__content__info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 0;
+  }
+
+  .user-info__row__block__card__content__info__comment {
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .user-info__row__block__card__content__info__comment__edit-user__button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
 </style>
