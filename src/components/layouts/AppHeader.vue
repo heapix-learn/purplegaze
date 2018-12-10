@@ -4,21 +4,21 @@
         <img src="../../assets/haze.png" class="image" @click="home"/>
       </div>
       <div class="app-header__user-buttons" v-if="isAuth">
-        <a class="waves-effect waves-light btn button-sign regButton"
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__reg-button"
            @click="toUserInfo"
         ><router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user">
           account_circle
         </i>{{firstName}}</router-link></a>
 
-        <a class="waves-effect waves-light btn button-sign regButton"
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__login-button"
            @click="logOut"
         ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
       </div>
 
       <div class="app-header__user-buttons" v-if="!isAuth">
-        <a class="waves-effect waves-light btn button-sign loginButton"
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__login-button"
         ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
-        <a class="waves-effect waves-light btn button-sign regButton"
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__reg-button"
         ><router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link></a>
       </div>
 
@@ -89,13 +89,13 @@ export default {
     font-size: 2rem;
   }
 
-  .regButton {
-    background: var(--white);
-    margin-left: 2rem;
-  }
-
-  .loginButton {
+  .app-header__user-buttons__reg-button {
     background: var(--white);
     margin-right: 2rem;
+  }
+
+  .app-header__user-buttons__login-button {
+    background: var(--white);
+    margin-left: 2rem;
   }
 </style>

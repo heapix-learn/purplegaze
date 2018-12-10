@@ -1,6 +1,6 @@
 <template>
   <div class="messages-block">
-    <div class="card horizontal" v-for="(message, id) in messages" :key="id">
+    <div class="card horizontal messages-block__card" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
     </div>
   </div>
@@ -33,5 +33,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .messages-block__card {
+    height: 20rem;
+  }
 </style>
