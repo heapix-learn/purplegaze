@@ -1,7 +1,7 @@
 <template>
     <div class="app-header">
       <div class="imageBlock">
-        <img src="../../assets/haze.png" class="image"/>
+        <img src="../../assets/haze.png" class="image" @click="home"/>
       </div>
       <div v-if="isAuth">
         <p class="currentUser">{{firstName}}</p>
@@ -39,6 +39,9 @@ export default {
     logOut () {
       localStorage.jwt = ''
       return this.$store.dispatch('user/logOut')
+    },
+    home () {
+      this.$router.push('/')
     }
   }
 }
@@ -60,6 +63,7 @@ export default {
   }
 
   .image {
+    cursor: pointer;
     height: 12rem;
     width: 12rem;
   }

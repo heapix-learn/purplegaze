@@ -9,21 +9,25 @@
 <script>
 import axios from 'axios'
 import Message from './Message'
-import NewMessage from './NewMessage'
 
 export default {
   name: 'Messages',
-  components: { Message, NewMessage },
+  components: { Message },
   data () {
     return {
       messages: []
     }
   },
   created () {
-    return axios.get('http://localhost:8008/messages')
-      .then(response => {
-        this.messages = response.data
-      })
+    this.getAllMessages()
+  },
+  methods: {
+    async getAllMessages () {
+      await (axios.get('http://localhost:8008/messages'))
+        .then(response => {
+          this.messages = response.data
+        })
+    }
   }
 }
 </script>

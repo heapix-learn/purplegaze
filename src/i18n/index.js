@@ -16,7 +16,9 @@ const messages = {
       login: 'login',
       signIn: 'sign in',
       createAcc: 'create account',
-      logOut: 'logout'
+      logOut: 'logout',
+      newMessagePage: 'create new message',
+      post: 'post message'
     },
     errors: {
       title: 'Please correct the error:',
@@ -45,7 +47,9 @@ const messages = {
       signUp: 'Зарегестрироваться',
       login: 'Войти',
       createAcc: 'Создать аккаунт',
-      logOut: 'Выйти'
+      logOut: 'Выйти',
+      newMessagePage: 'Создать новое сообщение',
+      post: 'Отправить сообщение'
     },
     errors: {
       title: 'Пожалуйста исправьте указанные ошибки:',

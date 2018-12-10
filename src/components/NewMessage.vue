@@ -37,7 +37,7 @@
             <a class="waves-effect waves-light btn"
                @click="checkForm"
                :disabled="errors.length > 0"
-            >post</a>
+            >{{ $t("buttons.post")}}</a>
           </div>
         </form>
       </div>
@@ -58,31 +58,29 @@ export default {
     }
   },
   methods: {
-    checkForm (e) {
+    async checkForm (e) {
       this.errors = []
       if (!this.post.text) {
         this.errors.push('Enter text')
       }
       if (!this.errors.length) {
-        axios.post('http://localhost:8008/messages', {
+        const date = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear()
+        await axios.post('http://localhost:8008/messages', {
           text: this.post.text,
           user_id: localStorage.jwt.substr(4),
-          hashtag: this.post.hashtag.split(' ')
+          hashtag: this.post.hashtag.split(' '),
+          firstName: this.$store.getters['user/user'].firstName,
+          lastName: this.$store.getters['user/user'].lastName,
+          date: date
         })
           .then(response => {
-            console.log(response.data)
+            console.log('Date' + response.data.month)
           })
           .catch(err => {
             console.error(err)
           })
       }
       e.preventDefault()
-    },
-    isHash (hashtag) {
-      const reg = /[#]/
-      console.log('lllll',reg.test(hashtag))
-      return reg.test(hashtag)
-
     },
     clearErrors () {
       this.errors = []
