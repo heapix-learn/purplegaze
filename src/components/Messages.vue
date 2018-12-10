@@ -34,6 +34,5 @@ export default {
 
 <style scoped>
   .messages-block__card {
-    height: 20rem;
   }
 </style>

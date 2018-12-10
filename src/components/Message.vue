@@ -2,6 +2,7 @@
   <div class="message-block">
     <div class="col s12 m7 frame message-block__frame">
       <div class="card-image message-block__frame__header">
+
         <img src="../assets/15.png" class="message-block__frame__header__image">
         <div class="message-block__frame__header__main-date">
           <div class="message-block__frame__header__main-date__user-date">
@@ -75,7 +76,6 @@ export default {
 <style scoped>
   .message-block__frame {
     width: 50rem;
-    height: 100%;
   }
 
   .message-block__frame__header {

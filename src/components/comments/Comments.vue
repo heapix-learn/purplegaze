@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <div v-for="(comment, index) in comments" :key="index" class="commentList">
-      <span class="commentList__author">{{comment.author}}</span> : {{comment.text}}
+  <div class="comments">
+    <div v-for="(comment, index) in comments" :key="index" class="comments__comment-list">
+      <span class="comments__comment-list__author">{{comment.author}}</span> : {{comment.text}}
     </div>
-    <div class="create-area">
-      <input class="create-area__input"
+    <div class="comments__create-area">
+      <input class="comments__create-area__input"
              type="text"
              v-model="newComment.text"
       >
-      <a class="card-action-icons" @click="createComment()"><i class="medium material-icons create-area__btn">send</i></a>
+      <a class="card-action-icons comments__create-area__sent" @click="createComment()"><i class="small material-icons create-area__btn">send</i></a>
     </div>
   </div>
 </template>
@@ -54,13 +54,13 @@ export default {
 </script>
 
 <style scoped>
-  .create-area {
+  .comments__create-area {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
   }
 
-  .create-area__input {
+  .comments__create-area__input {
     width: 65% !important;
     padding: 0 1rem !important;
     margin-bottom: 5px;
@@ -70,11 +70,15 @@ export default {
     color: orange;
   }
 
-  .commentList {
+  .comments__comment-list {
     padding-left: 3rem;
   }
 
-  .commentList__author {
+  .comments__comment-list__author {
     font-weight: bold;
+  }
+
+  .comments__create-area__sent{
+    cursor: pointer;
   }
 </style>
