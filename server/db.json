@@ -130,6 +130,24 @@
       "author": "Test Testov",
       "text": "bjhbjbl",
       "id": 14
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "testovii test",
+      "id": 15
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "",
+      "id": 16
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "such test 2",
+      "id": 17
     }
   ],
   "users": [

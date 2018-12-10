@@ -29,8 +29,8 @@
         </div>
         <div class="card-action">
           <a class="card-action-icons"><i class="medium material-icons">call_missed</i></a>
-          <a class="card-action-icons"><i class="medium material-icons">favorite</i></a>
-          <a class="card-action-icons"><i class="medium material-icons">exposure_neg_1</i></a>
+          <a class="card-action-icons"><i class="medium material-icons">thumb_up</i></a>
+          <a class="card-action-icons"><i class="medium material-icons">thumb_down</i></a>
           <a class="card-action-icons comment" @click="showComments()"><i class="medium material-icons">comment</i></a>
         </div>
         <Comments v-if="isComments" :message_id="message.id"></Comments>

@@ -3,18 +3,19 @@
       <div class="imageBlock">
         <img src="../../assets/haze.png" class="image" @click="home"/>
       </div>
-      <div v-if="isAuth">
-        <p class="currentUser"></p>
+      <div class="app-header__user-buttons" v-if="isAuth">
         <a class="waves-effect waves-light btn button-sign regButton"
            @click="toUserInfo"
-        ><router-link to="/" class="app-header-link">{{firstName}}</router-link></a>
+        ><router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user">
+          account_circle
+        </i>{{firstName}}</router-link></a>
 
         <a class="waves-effect waves-light btn button-sign regButton"
            @click="logOut"
         ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
       </div>
 
-      <div v-if="!isAuth">
+      <div class="app-header__user-buttons" v-if="!isAuth">
         <a class="waves-effect waves-light btn button-sign loginButton"
         ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
         <a class="waves-effect waves-light btn button-sign regButton"
@@ -75,20 +76,18 @@ export default {
     width: 12rem;
   }
 
-  .currentUser {
-    display: inline-block;
-    background: white;
-    width: 10rem;
+  .app-header__user-buttons {
+    margin-right: 5rem;
+  }
+
+  .app-header__user-buttons__user {
+    margin-right: 1rem;
   }
 
   .app-header-link {
     display: inherit;
     font-size: 2rem;
   }
-
-  /*.buttons {*/
-    /*margin-right: 5rem;*/
-  /*}*/
 
   .regButton {
     background: var(--white);

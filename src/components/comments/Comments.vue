@@ -7,9 +7,8 @@
       <input class="create-area__input"
              type="text"
              v-model="newComment.text"
-             @input="clearInput"
       >
-      <a class="card-action-icons" @click="createComment()"><i class="medium material-icons create-area__btn">chat_bubble</i></a>
+      <a class="card-action-icons" @click="createComment()"><i class="medium material-icons create-area__btn">send</i></a>
     </div>
   </div>
 </template>

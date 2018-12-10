@@ -12,7 +12,7 @@ import axios from 'axios'
 import Message from './Message'
 
 export default {
-  name: 'HashtagMessages',
+  name: 'UserMessages',
   components: { Message },
   data () {
     return {
