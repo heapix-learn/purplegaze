@@ -71,6 +71,7 @@
     methods: {
       async userInfo() {
         this.user = await this.$store.getters['user/user']
+        console.log()
       },
       openFormUser() {
         if (this.isEdit) {

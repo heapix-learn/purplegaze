@@ -34,7 +34,7 @@ export default {
     },
     firstName () {
       if (this.$store.getters['user/user'] === null) {
-        return 'User null'
+        return ''
       } else {
         return this.$store.getters['user/user'].firstName
       }
