@@ -3,7 +3,7 @@
       <a class="waves-effect waves-light btn toNewMessage"
          @click="toNewMessage"
          v-if="!isNewMessage"
-      ><i class="material-icons left">cloud</i>{{$t("buttons.newMessagePage")}}</a>
+      ><i class="material-icons left">create</i>{{$t("buttons.newMessagePage")}}</a>
       <slot></slot>
     </div>
 </template>

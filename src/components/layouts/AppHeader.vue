@@ -3,17 +3,22 @@
       <div class="imageBlock">
         <img src="../../assets/haze.png" class="image" @click="home"/>
       </div>
-      <div v-if="isAuth">
-        <p class="currentUser">{{firstName}}</p>
-        <a class="waves-effect waves-light btn button-sign regButton"
+      <div class="app-header__user-buttons" v-if="isAuth">
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
+           @click="toUserInfo"
+        ><router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user-login_icon">
+          account_circle
+        </i>{{firstName}}</router-link></a>
+
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
            @click="logOut"
         ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
       </div>
 
-      <div v-if="!isAuth">
-        <a class="waves-effect waves-light btn button-sign loginButton"
+      <div class="app-header__user-buttons" v-if="!isAuth">
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
         ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
-        <a class="waves-effect waves-light btn button-sign regButton"
+        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
         ><router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link></a>
       </div>
 
@@ -42,6 +47,9 @@ export default {
     },
     home () {
       this.$router.push('/')
+    },
+    toUserInfo () {
+      this.$router.push('/user-info')
     }
   }
 }
@@ -68,10 +76,17 @@ export default {
     width: 12rem;
   }
 
-  .currentUser {
-    display: inline-block;
-    background: white;
-    width: 10rem;
+  .app-header__user-buttons {
+    margin-right: 5rem;
+  }
+
+  .app-header__user-buttons__user-login {
+    background: var(--white);
+    margin-right: 2rem;
+  }
+
+  .app-header__user-buttons__user-login_icon {
+    margin-right: 2rem;
   }
 
   .app-header-link {
@@ -79,17 +94,8 @@ export default {
     font-size: 2rem;
   }
 
-  /*.buttons {*/
-    /*margin-right: 5rem;*/
-  /*}*/
-
-  .regButton {
+  .app-header__user-buttons__loginout-signup {
     background: var(--white);
     margin-left: 2rem;
-  }
-
-  .loginButton {
-    background: var(--white);
-    margin-right: 2rem;
   }
 </style>

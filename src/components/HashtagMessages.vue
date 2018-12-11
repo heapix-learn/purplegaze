@@ -1,6 +1,8 @@
 <template>
-  <div class="messages-block">
-    <div class="card horizontal messages-block__card" v-for="(message, id) in messages" :key="id">
+  <div class="hashtag-messages">
+    MessagesByHashtag:
+    #{{this.$route.params.hashtag}}
+    <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
     </div>
   </div>
@@ -11,7 +13,7 @@ import axios from 'axios'
 import Message from './Message'
 
 export default {
-  name: 'Messages',
+  name: 'HashtagMessages',
   components: { Message },
   data () {
     return {
@@ -19,11 +21,12 @@ export default {
     }
   },
   created () {
-    this.getAllMessages()
+    this.getMessagesByHashtag()
   },
   methods: {
-    async getAllMessages () {
-      await (axios.get('http://localhost:8008/messages'))
+    async getMessagesByHashtag () {
+      const hashtag = this.$route.params.hashtag
+      await (axios.get('http://localhost:8008/messages?hashtag_like=' + hashtag))
         .then(response => {
           this.messages = response.data
         })
@@ -33,6 +36,5 @@ export default {
 </script>
 
 <style scoped>
-  .messages-block__card {
-  }
+
 </style>

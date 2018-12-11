@@ -14,232 +14,7 @@
   },
   "messages": [
     {
-      "text": "second",
-      "user_id": "8",
-      "hashtag": [
-        "asd"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "month": 12,
-      "day": 7,
-      "year": 2018,
-      "id": 2
-    },
-    {
-      "text": "third",
-      "user_id": "8",
-      "hashtag": [
-        "zxc"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 7,
-      "month": 12,
-      "monthName": 6,
-      "year": 2018,
-      "id": 3
-    },
-    {
-      "text": "fourth",
-      "user_id": "8",
-      "hashtag": [
-        "rty"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 7,
-      "month": 12,
-      "year": 2018,
-      "id": 4
-    },
-    {
-      "text": "test na #",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 8,
-      "month": 12,
-      "year": 2018,
-      "id": 5
-    },
-    {
-      "text": "test na # 2",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 8,
-      "month": 12,
-      "year": 2018,
-      "id": 6
-    },
-    {
-      "text": "test na # 3",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 8,
-      "month": 12,
-      "year": 2018,
-      "id": 7
-    },
-    {
-      "text": "test na # 4",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 8,
-      "month": 12,
-      "year": 2018,
-      "id": 8
-    },
-    {
-      "text": "test na # 5",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "day": 8,
-      "month": 12,
-      "year": 2018,
-      "id": 9
-    },
-    {
-      "text": "bddfdfgdf",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "id": 10
-    },
-    {
-      "text": "ghfgfgf",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": 2038,
-      "id": 11
-    },
-    {
-      "text": "gnghnghg",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "81112018",
-      "id": 12
-    },
-    {
-      "text": "czcxzczczx",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.111.2018.",
-      "id": 13
-    },
-    {
-      "text": "vxvxvxc",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018.",
-      "id": 14
-    },
-    {
-      "text": "test na # f",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 15
-    },
-    {
-      "text": "tet",
-      "user_id": "8",
-      "hashtag": [
-        "ggg"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 16
-    },
-    {
-      "text": "test na # ",
-      "user_id": "8",
-      "hashtag": [
-        "g"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 17
-    },
-    {
-      "text": "bcbcv",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 18
-    },
-    {
-      "text": "hdfbsjbvs",
-      "user_id": "8",
-      "hashtag": [
-        "g"
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 19
-    },
-    {
-      "text": "jvnkld",
-      "user_id": "8",
-      "hashtag": [
-        ""
-      ],
-      "firstName": "Alik",
-      "lastName": "Aldo",
-      "date": "8.12.2018",
-      "id": 20
-    },
-    {
-      "text": "vxvxcvx",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequatur doloremque fugiat praesentium quas, suscipit consectetur adi!",
       "user_id": "8",
       "hashtag": [
         "vcvx",
@@ -249,7 +24,142 @@
       "firstName": "Alik",
       "lastName": "Aldo",
       "date": "8.12.2018",
-      "id": 21
+      "id": 1
+    },
+    {
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequatur doloremque fugiat praesentium quas, suscipit!",
+      "user_id": "8",
+      "hashtag": [
+        "axios",
+        "overtime",
+        "getpost",
+        "commit"
+      ],
+      "firstName": "Alik",
+      "lastName": "Aldo",
+      "date": "8.12.2018",
+      "id": 2
+    },
+    {
+      "text": "test",
+      "user_id": "5",
+      "hashtag": [
+        "vcvx"
+      ],
+      "firstName": "Piggy",
+      "lastName": "Ponk",
+      "date": "8.12.2018",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "bcbcbc",
+      "id": 2
+    },
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "Comments",
+      "id": 3
+    },
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "new comment",
+      "id": 4
+    },
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "new comment",
+      "id": 5
+    },
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "testovii test",
+      "id": 6
+    },
+    {
+      "message_id": 1,
+      "author": "Alik Aldo",
+      "text": "wfsdlfslf",
+      "id": 7
+    },
+    {
+      "message_id": 2,
+      "author": "Alik Aldo",
+      "text": "first",
+      "id": 8
+    },
+    {
+      "message_id": 2,
+      "author": "Alik Aldo",
+      "text": "seconrd com",
+      "id": 9
+    },
+    {
+      "message_id": 2,
+      "author": "Test Testov",
+      "text": "kbjlkbjl",
+      "id": 10
+    },
+    {
+      "message_id": 1,
+      "author": "Test Testov",
+      "text": "lhbkjhbkjhb",
+      "id": 11
+    },
+    {
+      "message_id": 1,
+      "author": "Test Testov",
+      "text": "",
+      "id": 12
+    },
+    {
+      "message_id": 1,
+      "author": "Test Testov",
+      "text": "",
+      "id": 13
+    },
+    {
+      "message_id": 2,
+      "author": "Test Testov",
+      "text": "bjhbjbl",
+      "id": 14
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "testovii test",
+      "id": 15
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "",
+      "id": 16
+    },
+    {
+      "message_id": 1,
+      "author": "Roma Zverb",
+      "text": "such test 2",
+      "id": 17
+    },
+    {
+      "message_id": 1,
+      "author": "Sasha Grey",
+      "text": "sdfsfsdfsdfsdfsdf",
+      "id": 18
+    },
+    {
+      "message_id": 3,
+      "author": "Roma Zverb",
+      "text": "dshfbskfbs",
+      "id": 19
     }
   ],
   "users": [

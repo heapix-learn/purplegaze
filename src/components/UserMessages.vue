@@ -1,6 +1,7 @@
 <template>
-  <div class="messages-block">
-    <div class="card horizontal messages-block__card" v-for="(message, id) in messages" :key="id">
+  <div class="user-messages">
+    Messages by user {{$route.params.user_name}}:
+    <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
     </div>
   </div>
@@ -11,7 +12,7 @@ import axios from 'axios'
 import Message from './Message'
 
 export default {
-  name: 'Messages',
+  name: 'UserMessages',
   components: { Message },
   data () {
     return {
@@ -19,11 +20,12 @@ export default {
     }
   },
   created () {
-    this.getAllMessages()
+    this.getMessagesByUser()
   },
   methods: {
-    async getAllMessages () {
-      await (axios.get('http://localhost:8008/messages'))
+    async getMessagesByUser () {
+      const id = this.$route.params.user_id
+      await (axios.get('http://localhost:8008/messages?user_id=' + id))
         .then(response => {
           this.messages = response.data
         })
@@ -33,6 +35,5 @@ export default {
 </script>
 
 <style scoped>
-  .messages-block__card {
-  }
+
 </style>
