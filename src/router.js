@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AuthGuard from './router/auth-guard'
 import SignUp from './components/SignUp.vue'
 import SignIn from './components/SignIn.vue'
 import Messages from './components/Messages.vue'
@@ -28,7 +29,8 @@ export default new Router({
     },
     {
       path: '/new-message',
-      component: NewMessage
+      component: NewMessage,
+      beforeEnter: AuthGuard
     },
     {
       path: '/user-info',
