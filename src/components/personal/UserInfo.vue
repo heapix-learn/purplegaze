@@ -5,12 +5,12 @@
         <div class="card user-info__row__block__card">
           <div class="user-info__row__block__card__card-image">
             <img class="user-info__row__block__card__card-image__image" src="../../assets/forest.jpg" height="532"
-                 width="800"/><span class="card-title user-info__row__block__card__card-image__name">{{user.firstName}} {{user.lastName}}</span>
+                 width="800"/><span class="card-title user-info__row__block__card__card-image__name">{{userInfo.firstName}} {{userInfo.lastName}}</span>
           </div>
           <div class="card-content user-info__row__block__card__content">
-            <p>user First Name: {{user.firstName}}</p>
-            <p>user Last Name: {{user.lastName}}</p>
-            <p>user Email: {{user.email}}</p>
+            <p>user First Name: {{userInfo.firstName}}</p>
+            <p>user Last Name: {{userInfo.lastName}}</p>
+            <p>user Email: {{userInfo.email}}</p>
           </div>
           <a @click="openFormUser()"><i
             class="medium material-icons user-info__row__block__card__content__info__comment">edit</i></a>
@@ -55,43 +55,44 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  export default {
-    name: 'UserInfo',
-    data() {
-      return {
-        user: {},
-        newFirstName: '',
-        isEdit: false
+import axios from 'axios'
+export default {
+  name: 'UserInfo',
+  data () {
+    return {
+      newFirstName: '',
+      isEdit: false
+    }
+  },
+  computed: {
+    userInfo () {
+      if (this.$store.getters['user/user'] === null) {
+        return ''
+      } else {
+        return this.$store.getters['user/user']
+      }
+    }
+  },
+  methods: {
+    openFormUser () {
+      if (this.isEdit) {
+        this.isEdit = false
+      } else {
+        this.isEdit = true
+        this.newFirstName = this.user.firstName
       }
     },
-    created() {
-      this.userInfo()
-    },
-    methods: {
-      async userInfo() {
-        this.user = await this.$store.getters['user/user']
-        console.log()
-      },
-      openFormUser() {
-        if (this.isEdit) {
-          this.isEdit = false
-        } else {
-          this.isEdit = true
-          this.newFirstName = this.user.firstName
-        }
-      },
-      editUser() {
-        if (this.newFirstName !== this.user.firstName) {
-          this.user.firstName = this.newFirstName
-          axios.put('http://localhost:8008/users/' + this.user)
-            .then(response => {
-              console.log(response.data)
-            })
-        }
+    editUser () {
+      if (this.newFirstName !== this.user.firstName) {
+        this.user.firstName = this.newFirstName
+        axios.put('http://localhost:8008/users/' + this.user)
+          .then(response => {
+            console.log(response.data)
+          })
       }
     }
   }
+}
 </script>
 
 <style scoped>
