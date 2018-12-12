@@ -8,9 +8,9 @@
                  width="800"/><span class="card-title user-info__row__block__card__card-image__name">{{userInfo.firstName}}</span>
           </div>
           <div class="card-content user-info__row__block__card__content">
-            <p>user First Name: {{userInfo.firstName}}</p>
-            <p>user Last Name: {{userInfo.lastName}}</p>
-            <p>user Email: {{userInfo.email}}</p>
+            <p>{{userInfo.firstName}}</p>
+            <p>{{userInfo.lastName}}</p>
+            <p>{{userInfo.email}}</p>
           </div>
           <a @click="openFormUser()"><i
             class="medium material-icons user-info__row__block__card__content__info__comment">edit</i></a>
@@ -23,14 +23,17 @@
                       <input id="first_name"
                              type="text"
                              class="validate"
+                             @input="clearErrors"
+                             maxlength="8"
                              v-model="newUser.firstName"
                       >
-                      <label for="first_name">First Name</label>
+                      <label for="first_name">First Name (max. 8)</label>
                     </div>
                     <div class="input-field col s6">
                       <input id="last_name"
                              type="text"
                              class="validate"
+                             @input="clearErrors"
                              v-model="newUser.lastName"
                       >
                       <label for="last_name">Last Name</label>
@@ -41,6 +44,7 @@
                       <input id="old_password"
                              type="password"
                              class="validate"
+                             @input="clearErrors"
                              v-model="oldPassword"
                       >
                       <label for="old_password">Old Password</label>
@@ -51,6 +55,7 @@
                       <input id="new_password"
                              type="password"
                              class="validate"
+                             @input="clearErrors"
                              v-model="newPassword"
                       >
                       <label for="new_password">New Password</label>
@@ -63,8 +68,20 @@
                   class="waves-effect waves-light btn button-sign user-info__row__block__card__content__info__comment__edit-user__button"
                   @click="editUser()"
                 >edit user</a>
+                <a
+                  class="waves-effect waves-light btn button-sign user-info__row__block__card__content__info__comment__edit-user__button"
+                  @click="editPassword()"
+                >edit password</a>
               </div>
             </div>
+          </div>
+          <div class="error-block" :class="{'error-block--visible': errors.length}">
+            <p v-if="errors.length">
+              <b>{{ $t("errors.title") }}</b>
+            <ul>
+              <li v-for="error in errors" :key="error">{{ $t(error) }}</li>
+            </ul>
+            </p>
           </div>
         </div>
       </div>
@@ -81,46 +98,62 @@ export default {
     return {
       oldPassword: '',
       newPassword: '',
-      newUser: {},
-      user: {},
-      isEdit: false
+      // newUser: {},
+      // user: {},
+      isEdit: false,
+      errors: []
     }
   },
+  // mounted () {
+  //     this.user =  this.$store.getters['user/user']
+  //     for (var key in this.user) {
+  //       this.newUser = Object.assign({}, this.user)
+  //     }
+  // },
   computed: {
     userInfo () {
       if (this.$store.getters['user/user'] === null) {
         return ''
       } else {
-        this.user = this.$store.getters['user/user']
-        for (var key in this.user) {
-          this.newUser[key] = this.user[key]
-        }
-        console.log(this.newUser)
         return this.$store.getters['user/user']
       }
+    },
+    newUser () {
+      return Object.assign({}, this.userInfo)
     }
   },
   methods: {
     openFormUser () {
-      if (this.isEdit) {
-        this.isEdit = false
-      } else {
-        this.isEdit = true
-      }
+      this.isEdit = !this.isEdit
     },
     editUser () {
-      if (this.oldPassword.length === 0 || this.oldPassword === this.user.password) {
-        if (this.newPassword.length > 2 && this.oldPassword === this.user.password) {
-          this.newUser.password = this.newPassword
-        } else {
-          alert('Wrong password!')
-        }
+      if (this.newUser.firstName.length < 3) {
+        this.errors.push('First Name more than 3 letters')
+      } else if (this.newUser.lastName.length < 3) {
+        this.errors.push('Last Name more than 3 letters')
+      } else {
         axios.put('http://localhost:8008/users/' + this.userInfo.id, this.newUser)
         location.reload()
-      } else {
-        alert('Wrong old password'
-        )
       }
+    },
+    editPassword () {
+      if (!this.oldPassword) {
+        this.errors.push('Please enter old password')
+      }
+      if (this.oldPassword) {
+        if (this.oldPassword !== this.user.password) {
+          this.errors.push('Wrong old password')
+        } else if (!this.newPassword) {
+          this.errors.push('Please enter new password')
+        } else {
+          this.newUser.password = this.newPassword
+          axios.put('http://localhost:8008/users/' + this.userInfo.id, this.newUser)
+          location.reload()
+        }
+      }
+    },
+    clearErrors () {
+      this.errors = []
     }
   }
 }
@@ -145,6 +178,7 @@ export default {
   .user-info__row__block__card__card-image__image {
     width: 100%;
     height: 45vh;
+    margin-bottom: 3rem;
   }
 
   .user-info__row__block__card__card-image__name {
@@ -179,8 +213,26 @@ export default {
 
   .user-info__row__block__card__content__info__comment__edit-user__button {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1rem auto;
     width: 50%;
+  }
+
+  .error-block {
+    width: 450px;
+    height: 126px;
+    margin-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d66d7e;
+    border: 3px solid #e00000;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Arial;
+    opacity: 0;
+  }
+
+  .error-block--visible {
+    opacity: 1;
   }
 </style>
