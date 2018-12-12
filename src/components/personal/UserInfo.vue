@@ -2,20 +2,19 @@
   <div class="user-info">
     <div class="row user-info__row">
       <div class="user-info__row__block">
-        <div class="card user-info__row__block__card">
-          <div class="user-info__row__block__card__card-image">
-            <img class="user-info__row__block__card__card-image__image" src="../../assets/forest.jpg" height="532"
-                 width="800"/><span class="card-title user-info__row__block__card__card-image__name">{{userInfo.firstName}}</span>
+        <div class="card user-info__card">
+          <div class="user-info__card__card-image">
+            <img class="user-info__card-image__image" src="../../assets/forest.jpg" height="532"
+                 width="800"/><span class="card-title user-info__card-image__name">{{userInfo.firstName}}</span>
           </div>
-          <div class="card-content user-info__row__block__card__content">
+          <div class="card-content user-info__card__content">
             <p>{{userInfo.firstName}}</p>
             <p>{{userInfo.lastName}}</p>
             <p>{{userInfo.email}}</p>
           </div>
-          <a @click="openFormUser()"><i
-            class="medium material-icons user-info__row__block__card__content__info__comment">edit</i></a>
-          <div class="user-info__row__block__card__content__info">
-            <div class="user-info__row__block__card__content__info__comment__edit-user" v-if="isEdit">
+          <a @click="openFormUser()"><i class="medium material-icons user-info__info__comment">edit</i></a>
+          <div class="user-info__content__info">
+            <div class="user-info__comment__edit-user" v-if="isEdit">
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -63,19 +62,21 @@
                   </div>
                 </form>
               </div>
-              <div user-info__row__block__card__content__info__comment__edit-user__button>
+              <div class="user-info__edit-user__button-block">
                 <a
-                  class="waves-effect waves-light btn button-sign user-info__row__block__card__content__info__comment__edit-user__button"
+                  class="waves-effect waves-light btn button-sign user-info__edit-user__button"
                   @click="editUser()"
                 >edit user</a>
                 <a
-                  class="waves-effect waves-light btn button-sign user-info__row__block__card__content__info__comment__edit-user__button"
+                  class="waves-effect waves-light btn button-sign user-info__edit-user__button"
                   @click="editPassword()"
                 >edit password</a>
               </div>
             </div>
           </div>
-          <div class="error-block" :class="{'error-block--visible': errors.length}">
+          <div class="user-info__error-block"
+               :class="{'user-info__error-block--visible': errors.length}"
+          >
             <p v-if="errors.length">
               <b>{{ $t("errors.title") }}</b>
             <ul>
@@ -98,18 +99,10 @@ export default {
     return {
       oldPassword: '',
       newPassword: '',
-      // newUser: {},
-      // user: {},
       isEdit: false,
       errors: []
     }
   },
-  // mounted () {
-  //     this.user =  this.$store.getters['user/user']
-  //     for (var key in this.user) {
-  //       this.newUser = Object.assign({}, this.user)
-  //     }
-  // },
   computed: {
     userInfo () {
       if (this.$store.getters['user/user'] === null) {
@@ -125,6 +118,9 @@ export default {
   methods: {
     openFormUser () {
       this.isEdit = !this.isEdit
+      if (this.errors.length) {
+        this.clearErrors()
+      }
     },
     editUser () {
       if (this.newUser.firstName.length < 3) {
@@ -166,22 +162,22 @@ export default {
     width: 100vw;
   }
 
-  .user-info__row__block__card {
+  .user-info__card {
     height: 80vh;
     margin: 0;
   }
 
-  .user-info__row__block__card__content {
+  .user-info__card__content {
     padding: 1rem;
   }
 
-  .user-info__row__block__card__card-image__image {
+  .user-info__card-image__image {
     width: 100%;
     height: 45vh;
     margin-bottom: 3rem;
   }
 
-  .user-info__row__block__card__card-image__name {
+  .user-info__card-image__name {
     position: absolute;
     left: 1rem;
     top: 32rem;
@@ -195,29 +191,29 @@ export default {
     color: var(--black) !important;
   }
 
-  .user-info__row__block__card__content__info {
+  .user-info__content__info {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 0;
   }
 
-  .user-info__row__block__card__content__info__comment {
+  .user-info__info__comment {
     cursor: pointer;
     padding: 0.5rem;
   }
 
-  .user-info__row__block__card__content__info__comment__edit-user {
+  .user-info__comment__edit-user {
     width: 30%;
   }
 
-  .user-info__row__block__card__content__info__comment__edit-user__button {
+  .user-info__edit-user__button {
     display: block;
     margin: 1rem auto;
     width: 50%;
   }
 
-  .error-block {
+  .user-info__error-block {
     width: 450px;
     height: 126px;
     margin-left: 2rem;
@@ -232,7 +228,7 @@ export default {
     opacity: 0;
   }
 
-  .error-block--visible {
+  .user-info__error-block--visible {
     opacity: 1;
   }
 </style>
