@@ -6,7 +6,7 @@
         <img src="../assets/15.png" class="message-block__frame__header__image">
         <div class="message-block__frame__header__main-date">
           <div class="message-block__frame__header__main-date__user-date">
-            <router-link :to="{name:'UserMessages', params: {user_id: message.user_id, user_name: message.firstName}}">
+            <router-link :to="`/user/${message.user_id}`">
               <span>{{ message.firstName }} &nbsp;</span>
               <span>{{ message.lastName }}<br></span>
             </router-link>

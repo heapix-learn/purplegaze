@@ -42,9 +42,8 @@ export default new Router({
       name: 'HashtagMessages'
     },
     {
-      path: '/user-messages',
-      component: UserMessages,
-      name: 'UserMessages'
+      path: '/user/:id',
+      component: UserMessages
     }
   ]
 })

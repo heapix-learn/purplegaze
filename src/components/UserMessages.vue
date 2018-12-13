@@ -1,8 +1,7 @@
 <template>
   <div class="user-messages">
-    Information by user {{$route.params.user_name}}
-    <UserPage :id = "this.$route.params.user_id"></UserPage>
-    Messages by user {{$route.params.user_name}}:
+    <UserPage :id = "this.$route.params.id"></UserPage>
+    <br>
     <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
     </div>
@@ -27,7 +26,7 @@ export default {
   },
   methods: {
     async getMessagesByUser () {
-      const id = this.$route.params.user_id
+      const id = this.$route.params.id
       await (axios.get('http://localhost:8008/messages?user_id=' + id))
         .then(response => {
           this.messages = response.data
