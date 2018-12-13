@@ -2,7 +2,7 @@
   <div id="app">
     <app-header v-if="!isSignPage"/>
     <app-main>
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </app-main>
     <app-footer v-if="!isSignPage"/>
   </div>

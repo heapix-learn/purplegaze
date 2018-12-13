@@ -5,6 +5,7 @@
       <p>First Name: {{ user.firstName }}</p>
       <p>Last Name: {{ user.lastName }}</p>
       <p>Email: {{ user.email }}</p>
+      <p>Quantity of posts: {{ quantity}}</p>
     </div>
     <h1 v-if="!exist">
       404 (Not Found)<br>Such user does not exist.
@@ -23,7 +24,7 @@ export default {
       exist: true
     }
   },
-  props: ['id'],
+  props: ['id', 'quantity'],
   created () {
     this.getMessagesById()
   },
@@ -32,7 +33,6 @@ export default {
       const id = this.id
       await (axios.get('http://localhost:8008/users/' + id))
         .then(response => {
-          console.log(response.data)
           this.user = response.data
         })
         .catch(err => {
