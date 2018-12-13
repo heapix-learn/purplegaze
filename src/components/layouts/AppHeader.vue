@@ -1,12 +1,13 @@
 <template>
   <div class="app-header">
     <div class="app-header__search">
-      <a class="waves-effect waves-light btn">search</a>
+      <a class="waves-effect waves-light btn" @click="searchUser()">search</a>
       <div class="row app-header__search__form">
         <div class="input-field col s6 app-header__search__input-block">
-          <input id="first_name2" type="text" class="validate search__input-block__input">
+          <input id="first_name2" type="text" class="validate search__input-block__input" v-model="search">
         </div>
       </div>
+      <span><img src="../../assets/1.png" height="50" width="50"/></span>
     </div>
     <div class="imageBlock">
       <img src="../../assets/haze.png" class="image" @click="home"/>
@@ -43,8 +44,15 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'AppHeader',
+  data () {
+    return {
+      users: [],
+      search: ''
+    }
+  },
   computed: {
     isAuth () {
       return this.$store.getters['user/isAuth']
@@ -58,6 +66,13 @@ export default {
     }
   },
   methods: {
+    async searchUser () {
+      await (axios.get('http://localhost:8008/users'))
+        .then(response => {
+          this.users = response.data
+        })
+      console.log(this.users)
+    },
     logOut () {
       localStorage.jwt = ''
       return this.$store.dispatch('user/logOut')
@@ -87,7 +102,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     background: white;
-    margin:0 2rem;
+    margin: 0 2rem;
   }
 
   .app-header__search__form {
