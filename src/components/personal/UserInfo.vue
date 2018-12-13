@@ -11,6 +11,7 @@
             <p>{{userInfo.firstName}}</p>
             <p>{{userInfo.lastName}}</p>
             <p>{{userInfo.email}}</p>
+            <p>{{this.$store.getters['user/user'].password}}</p>
           </div>
           <a @click="openFormUser()"><i class="medium material-icons user-info__info__comment">edit</i></a>
           <div class="user-info__content__info">
@@ -137,7 +138,7 @@ export default {
         this.errors.push('Please enter old password')
       }
       if (this.oldPassword) {
-        if (this.oldPassword !== this.user.password) {
+        if (this.oldPassword !== this.$store.getters['user/user'].password) {
           this.errors.push('Wrong old password')
         } else if (!this.newPassword) {
           this.errors.push('Please enter new password')

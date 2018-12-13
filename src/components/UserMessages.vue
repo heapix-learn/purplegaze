@@ -1,5 +1,7 @@
 <template>
   <div class="user-messages">
+    Information by user {{$route.params.user_name}}
+    <UserPage :id = "this.$route.params.user_id"></UserPage>
     Messages by user {{$route.params.user_name}}:
     <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>
@@ -10,14 +12,24 @@
 <script>
 import axios from 'axios'
 import Message from './Message'
+import UserPage from './personal/UserPage'
 
 export default {
   name: 'UserMessages',
-  components: { Message },
+  components: { UserPage, Message },
   data () {
     return {
       messages: []
     }
+  },
+  computed: {
+    // userInfo () {
+    //   if (this.$store.getters['user/user'] === null) {
+    //     return ''
+    //   } else {
+    //     return this.$store.getters['user/user']
+    //   }
+    // }
   },
   created () {
     this.getMessagesByUser()

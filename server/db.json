@@ -50,6 +50,20 @@
       "lastName": "Ponk",
       "date": "8.12.2018",
       "id": 3
+    },
+    {
+      "text": "Зима – это самое холодное и снежное время года. По крайней мере, с этим высказыванием согласится каждый житель нашей страны. А, между тем...",
+      "user_id": "1",
+      "hashtag": [
+        "earth",
+        "info",
+        "winter",
+        "cold"
+      ],
+      "firstName": "Sasha",
+      "lastName": "Grey",
+      "date": "13.12.2018",
+      "id": 4
     }
   ],
   "comments": [
@@ -181,7 +195,7 @@
       "firstName": "John",
       "lastName": "Doe",
       "email": "johndoe@gmail.com",
-      "password": "12345",
+      "password": "123",
       "id": 3
     },
     {
