@@ -22,15 +22,6 @@ export default {
       messages: []
     }
   },
-  computed: {
-    // userInfo () {
-    //   if (this.$store.getters['user/user'] === null) {
-    //     return ''
-    //   } else {
-    //     return this.$store.getters['user/user']
-    //   }
-    // }
-  },
   created () {
     this.getMessagesByUser()
   },
