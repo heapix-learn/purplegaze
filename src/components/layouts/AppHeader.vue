@@ -1,28 +1,45 @@
 <template>
-    <div class="app-header">
-      <div class="imageBlock">
-        <img src="../../assets/haze.png" class="image" @click="home"/>
+  <div class="app-header">
+    <div class="app-header__search">
+      <a class="waves-effect waves-light btn">search</a>
+      <div class="row app-header__search__form">
+        <div class="input-field col s6 app-header__search__input-block">
+          <input id="first_name2" type="text" class="validate search__input-block__input">
+        </div>
       </div>
-      <div class="app-header__user-buttons" v-if="isAuth">
-        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
-           @click="toUserInfo"
-        ><router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user-login_icon">
+    </div>
+    <div class="imageBlock">
+      <img src="../../assets/haze.png" class="image" @click="home"/>
+    </div>
+    <div class="app-header__user-buttons" v-if="isAuth">
+      <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
+         @click="toUserInfo"
+      >
+        <router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user-login_icon">
           account_circle
-        </i>{{firstName}}</router-link></a>
+        </i>{{firstName}}
+        </router-link>
+      </a>
 
-        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
-           @click="logOut"
-        ><router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link></a>
-      </div>
+      <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
+         @click="logOut"
+      >
+        <router-link to="/" class="app-header-link">{{ $t("buttons.logOut") }}</router-link>
+      </a>
+    </div>
 
-      <div class="app-header__user-buttons" v-if="!isAuth">
-        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
-        ><router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link></a>
-        <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
-        ><router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link></a>
-      </div>
+    <div class="app-header__user-buttons" v-if="!isAuth">
+      <a class="waves-effect waves-light btn button-sign app-header__user-buttons__user-login"
+      >
+        <router-link to="/signin" class="app-header-link">{{ $t("buttons.login") }}</router-link>
+      </a>
+      <a class="waves-effect waves-light btn button-sign app-header__user-buttons__loginout-signup"
+      >
+        <router-link to="/signup" class="app-header-link">{{ $t("buttons.signUp") }}</router-link>
+      </a>
+    </div>
 
-      </div>
+  </div>
 </template>
 
 <script>
@@ -63,6 +80,27 @@ export default {
     width: 100%;
     height: 10vh;
     background: var(--black);
+  }
+
+  .app-header__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    margin:0 2rem;
+  }
+
+  .app-header__search__form {
+    margin: 0;
+  }
+
+  .app-header__search__input-block {
+    margin: 0;
+    width: 100% !important;
+  }
+
+  .search__input-block__input {
+    margin: 0 !important;
   }
 
   .imageBlock {
