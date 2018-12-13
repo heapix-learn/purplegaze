@@ -14,8 +14,7 @@
           </div>
           <div class="message-block__frame__header__hashtags">
               <span v-for="(hash, index) in message.hashtag" :key="index">
-
-               <router-link :to="{name: 'HashtagMessages', params: {hashtag: hash}}">
+               <router-link :to="`/hashtag/${hash}`">
                  <span v-if="isHash(hash)">
                 #{{hash}}&nbsp;
                  </span>
@@ -58,11 +57,7 @@ export default {
   },
   methods: {
     showComments () {
-      if (this.isComments) {
-        this.isComments = false
-      } else {
-        this.isComments = true
-      }
+      this.isComments = !this.isComments
     },
     isHash (tag) {
       if (tag.length > 0) {

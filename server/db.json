@@ -64,6 +64,21 @@
       "lastName": "Grey",
       "date": "13.12.2018",
       "id": 4
+    },
+    {
+      "text": "Должность «столового мальчика» была очень почетной в Древнем Риме. Так называли детей с пышными волосами, которые присутствовали во время...",
+      "user_id": "4",
+      "hashtag": [
+        "rome",
+        "ancient",
+        "info",
+        "facts",
+        "citizens"
+      ],
+      "firstName": "Bugs",
+      "lastName": "Bunny",
+      "date": "13.12.2018",
+      "id": 5
     }
   ],
   "comments": [
@@ -180,6 +195,12 @@
       "author": "Roma Zverb",
       "text": "gdgdfgdfdf",
       "id": 20
+    },
+    {
+      "message_id": 4,
+      "author": "Bugs Bunny",
+      "text": "Winter is cool!",
+      "id": 21
     }
   ],
   "users": [
