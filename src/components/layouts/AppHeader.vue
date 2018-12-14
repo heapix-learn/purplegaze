@@ -1,7 +1,7 @@
 <template>
   <div class="app-header">
     <div class="app-header__search">
-      <a class="waves-effect waves-light btn" @click="searchUser()">search</a>
+      <a class="waves-effect waves-light btn" @click="searchUser()">search #</a>
       <div class="row app-header__search__form">
         <div class="input-field col s6 app-header__search__input-block">
           <input id="first_name2" type="text" class="validate search__input-block__input" v-model="search">

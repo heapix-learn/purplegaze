@@ -1,9 +1,9 @@
 <template>
   <div class="user-messages">
-    <UserPage :id = "this.$route.params.id" :quantity="messages.length"></UserPage>
+    <UserPage :id = "this.$route.params.id" :quantity="messages.length" @exist="someFunc()"></UserPage>
     <br>
     <div class="card horizontal" v-for="(message, id) in messages" :key="id">
-      <Message :message="message"></Message>
+      <Message :message="message" v-if="userExist"></Message>
     </div>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   components: { UserPage, Message },
   data () {
     return {
-      messages: []
+      messages: [],
+      userExist: true
     }
   },
   created () {
@@ -34,6 +35,9 @@ export default {
         .catch(err => {
           console.error(err)
         })
+    },
+    someFunc () {
+      this.userExist = false
     }
   }
 }

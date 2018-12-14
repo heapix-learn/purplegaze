@@ -37,6 +37,9 @@ export default {
         })
         .catch(err => {
           this.exist = !this.exist
+          if (!this.exist) {
+            this.$emit('exist')
+          }
           console.error(err)
         })
     }
