@@ -42,7 +42,7 @@ export default {
 
   .toNewMessage {
     position: fixed;
-    top: 20%;
-    left: 25%;
+    top: 10%;
+    left: 5%;
   }
 </style>

@@ -5,7 +5,7 @@
     >
       <router-link to="/" class="app-header-link"><i class="material-icons app-header__user-buttons__user-login_icon">
         arrow_downward
-      </i>Choose search option
+      </i>{{$t("buttons.chooseSearch")}}
       </router-link>
     </a>
     <SearchForm v-if="buttonsShow"></SearchForm>

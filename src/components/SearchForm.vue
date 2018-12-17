@@ -4,13 +4,13 @@
       <button class="btn waves-effect waves-light search__choice-block__button"
               name="action"
               @click="showSearchUser()"
-      >Search user
+      >{{$t("buttons.searchUser")}}
         <i class="material-icons right ">arrow_right_alt</i>
       </button>
       <button class="btn waves-effect waves-light search__choice-block__button"
               name="action"
               @click="showSearchHash()"
-      >Search #
+      >{{$t("buttons.searchHash")}}
         <i class="material-icons right">arrow_right_alt</i>
       </button>
     </div>
@@ -20,7 +20,7 @@
           <a class="waves-effect waves-light btn"
              @click="filterUsers()"
              :disabled="errors.length > 0"
-          >go search</a>
+          >{{$t("buttons.goSearch")}}</a>
           <div class="row search__search__form">
             <div class="input-field col s6 search__search__input-block">
               <input type="text"
@@ -43,7 +43,7 @@
           <a class="waves-effect waves-light btn"
              @click="filterHash()"
              :disabled="errors.length > 0"
-          >go search</a>
+          >{{$t("buttons.goSearch")}}</a>
           <div class="row search__search__form">
             <div class="input-field col s6 search__search__input-block">
               <input type="text"
@@ -63,8 +63,8 @@
       <div class="error-block" :class="{'error-block--visible': errors.length}">
         <p v-if="errors.length">
           <b>{{ $t("errors.title") }}</b>
-        <ul>
-          <li class="error-block__list" v-for="error in errors" v-bind:key="error">{{ $t(error) }}</li>
+        <ul  class="error-block__list">
+          <li v-for="error in errors" v-bind:key="error">{{ $t(error) }}</li>
         </ul>
         </p>
       </div>
@@ -97,13 +97,13 @@ export default {
     filterUsers () {
       const search = this.searchUser
       if (!this.searchUser) {
-        this.errors.push('errors.email')
+        this.errors.push('errors.enterUserName')
       } else {
         this.filteredUsers = this.users.filter(function (user) {
           return user.firstName.toLowerCase().indexOf(search.toLowerCase()) > -1
         })
         if (!this.filteredUsers.length) {
-          this.errors.push('Not found! Sorry, such user doesn\'t exist.')
+          this.errors.push('errors.userNotFound')
         }
       }
     },
@@ -111,7 +111,7 @@ export default {
       this.filteredHashes = []
       const search = this.searchHash
       if (!this.searchHash) {
-        this.errors.push('Empty #')
+        this.errors.push('errors.enterHashName')
       } else {
         for (let i = 0; i < this.messages.length; i++) {
           for (let j = 0; j < this.messages[i].hashtag.length; j++) {
@@ -229,5 +229,10 @@ export default {
 
   .error-block--visible {
     opacity: 1;
+  }
+
+  .error-block__list {
+    display: flex;
+    justify-content: center;
   }
 </style>

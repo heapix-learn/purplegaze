@@ -11,7 +11,7 @@
                         v-model="post.text"
                         @input="clearErrors"
               ></textarea>
-              <label for="textarea2" class="label">Text (max: 140)</label>
+              <label for="textarea2" class="label">{{$t("inputs.text")}} (max: 140)</label>
             </div>
           </div>
           <div class="row">
