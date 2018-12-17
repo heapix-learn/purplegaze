@@ -1,14 +1,14 @@
 <template>
   <div class="user-page">
     <div class="user-page__user-info" v-if="exist">
-      Information by user: {{user.firstName}} {{ user.lastName }}
-      <p>First Name: {{ user.firstName }}</p>
-      <p>Last Name: {{ user.lastName }}</p>
-      <p>Email: {{ user.email }}</p>
-      <p>Quantity of posts: {{ quantity}}</p>
+      {{$t("fields.infoByUser")}}: {{user.firstName}} {{ user.lastName }}
+      <p>{{$t("fields.firstName")}}: {{ user.firstName }}</p>
+      <p>{{$t("fields.lastName")}}: {{ user.lastName }}</p>
+      <p>{{$t("fields.email")}}: {{ user.email }}</p>
+      <p>{{$t("fields.quantityOfPosts")}}: {{ quantity}}</p>
     </div>
     <h1 v-if="!exist">
-      404 (Not Found)<br>Such user does not exist.
+      404 (Not Found)<br>{{$t("errors.userNotFound")}}
     </h1>
   </div>
 </template>

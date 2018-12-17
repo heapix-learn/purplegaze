@@ -48,6 +48,14 @@ const messages = {
       text: 'Text',
       oldPassword: 'Old Password',
       newPassword: 'New Password'
+    },
+    fields: {
+      infoByUser: 'Information by user',
+      messagesByHash: 'Messages by hashtag',
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      email: 'Email',
+      quantityOfPosts: 'Quantity of posts'
     }
   },
   ru: {
@@ -94,6 +102,14 @@ const messages = {
       text: 'Текст',
       oldPassword: 'Старый пароль',
       newPassword: 'Новый пароль'
+    },
+    fields: {
+      infoByUser: 'Информация о пользователе',
+      messagesByHash: 'Сообщения по хэштегам',
+      firstName: 'Имя',
+      lastName: 'Фамилия',
+      email: 'Электронная почта',
+      quantityOfPosts: 'Количество постов'
     }
   }
 }
