@@ -137,7 +137,7 @@ export default {
         this.errors.push('Please enter old password')
       }
       if (this.oldPassword) {
-        if (this.oldPassword !== this.user.password) {
+        if (this.oldPassword !== this.$store.getters['user/user'].password) {
           this.errors.push('Wrong old password')
         } else if (!this.newPassword) {
           this.errors.push('Please enter new password')

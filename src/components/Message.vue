@@ -6,7 +6,7 @@
         <img src="../assets/15.png" class="message-block__frame__header__image">
         <div class="message-block__frame__header__main-date">
           <div class="message-block__frame__header__main-date__user-date">
-            <router-link :to="{name:'UserMessages', params: {user_id: message.user_id, user_name: message.firstName}}">
+            <router-link :to="`/user/${message.user_id}`">
               <span>{{ message.firstName }} &nbsp;</span>
               <span>{{ message.lastName }}<br></span>
             </router-link>
@@ -14,8 +14,7 @@
           </div>
           <div class="message-block__frame__header__hashtags">
               <span v-for="(hash, index) in message.hashtag" :key="index">
-
-               <router-link :to="{name: 'HashtagMessages', params: {hashtag: hash}}">
+               <router-link :to="`/hashtag/${hash}`">
                  <span v-if="isHash(hash)">
                 #{{hash}}&nbsp;
                  </span>
@@ -58,11 +57,7 @@ export default {
   },
   methods: {
     showComments () {
-      if (this.isComments) {
-        this.isComments = false
-      } else {
-        this.isComments = true
-      }
+      this.isComments = !this.isComments
     },
     isHash (tag) {
       if (tag.length > 0) {
