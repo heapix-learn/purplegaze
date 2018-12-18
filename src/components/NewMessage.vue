@@ -1,7 +1,7 @@
 <template>
     <div class="newmessage-block">
       <div class="row input">
-        <form class="col s12 form">
+        <form class="col s12 newmessage-block__text">
           <div class="row">
             <div class="input-field col s12">
               <textarea id="textarea2"
@@ -11,20 +11,40 @@
                         v-model="post.text"
                         @input="clearErrors"
               ></textarea>
-              <label for="textarea2" class="label">{{$t("inputs.text")}} (max: 140)</label>
+              <label for="textarea2" class="label">{{$t("inputs.text")}} ({{post.text.length}}/140)</label>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="input_text"
-                     type="text"
-                     data-length="10"
-                     v-model="post.hashtag"
-                     @input="clearErrors"
-              >
-              <label for="input_text">#</label>
+        </form>
+        <div class="row newmessage-block__text">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="text"
+                       data-length="10"
+                       v-model="post.hashtag"
+                       @input="clearErrors"
+                >
+                <label>#</label>
+              </div>
+              <div class="input-field col s6" v-show="isLinkField">
+                <input type="text" v-model="post.link">
+                <label>Link</label>
+              </div>
             </div>
-          </div>
+            <div class="newmessage-block__buttons-block">
+              <a class="btn-floating btn-small waves-effect waves-light btn newmessage-block__buttons-block__button"
+                 @click="showLinkField()"
+              ><i class="material-icons">add link</i></a>
+              <a class="btn-floating btn-small waves-effect waves-light btn newmessage-block__buttons-block__button"
+                 @click="showLinkField()"
+              ><i class="material-icons">add link</i></a>
+              <a class="btn-floating btn-small waves-effect waves-light btn newmessage-block__buttons-block__button"
+                 @click="showLinkField()"
+              ><i class="material-icons">add link</i></a>
+            </div>
+          </form>
+        </div>
+
           <div class="error-block" :class="{'error-block--visible': errors.length}">
             <p v-if="errors.length">
               <b>{{ $t("errors.title") }}</b>
@@ -39,7 +59,6 @@
                :disabled="errors.length > 0"
             >{{ $t("buttons.post")}}</a>
           </div>
-        </form>
       </div>
     </div>
 </template>
@@ -51,9 +70,11 @@ export default {
   data () {
     return {
       errors: [],
+      isLinkField: false,
       post: {
         text: '',
-        hashtag: ''
+        hashtag: '',
+        link: ''
       }
     }
   },
@@ -67,6 +88,7 @@ export default {
         const date = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear()
         await axios.post('http://localhost:8008/messages', {
           text: this.post.text,
+          link: this.post.link,
           user_id: localStorage.jwt.substr(4),
           hashtag: this.post.hashtag.split(' '),
           firstName: this.$store.getters['user/user'].firstName,
@@ -79,11 +101,15 @@ export default {
           .catch(err => {
             console.error(err)
           })
+        this.$router.push('/')
       }
       e.preventDefault()
     },
     clearErrors () {
       this.errors = []
+    },
+    showLinkField () {
+      this.isLinkField = !this.isLinkField
     }
   }
 }
@@ -105,7 +131,7 @@ export default {
     width: 100rem;
   }
 
-  .form {
+  .newmessage-block__text {
     padding: 0 10rem;
   }
 
@@ -125,6 +151,18 @@ export default {
   }
   .error-block--visible {
     opacity: 1;
+  }
+
+  .newmessage-block__buttons-block {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 50rem;
+    top: 40rem;
+  }
+
+  .newmessage-block__buttons-block__button {
+    margin: 1rem;
   }
 
   .buttonPost {

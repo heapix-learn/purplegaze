@@ -79,6 +79,106 @@
       "lastName": "Bunny",
       "date": "13.12.2018",
       "id": 5
+    },
+    {
+      "text": "https://goodgame.ru/",
+      "user_id": "2",
+      "hashtag": [
+        "goodgame",
+        "miker",
+        "cybersport"
+      ],
+      "firstName": "Roma",
+      "lastName": "Zverb",
+      "date": "17.12.2018",
+      "id": 6
+    },
+    {
+      "text": "Французский король Людовик XVI самостоятельно изготовил сейф для хранения тайных бумаг. Он вмонтировал его в стену, снабдив замками с...",
+      "user_id": "3",
+      "hashtag": [
+        "safe",
+        "info",
+        "facts"
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "17.12.2018",
+      "id": 7
+    },
+    {
+      "text": "При слове «Лапландия» большинство из нас, наверно, сразу вспомнят, что там находится резиденция Санта-Клауса, или, как называют его финны...",
+      "user_id": "3",
+      "hashtag": [
+        "laplandia",
+        "snow",
+        "winter",
+        "cold",
+        "info"
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "17.12.2018",
+      "id": 8
+    },
+    {
+      "text": "Считается, что наиболее благоприятными для образования снежных лавин являются склоны, крутизна которых составляет от 25 до 45 градусов. ",
+      "link": "https://i-fakt.ru",
+      "user_id": "3",
+      "hashtag": [
+        "info",
+        "snow",
+        ""
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "18.12.2018",
+      "id": 9
+    },
+    {
+      "text": "Полное руководство для современной веб-разработки - Видеоуроки",
+      "link": "https://coursehunters.net/course/freymvork-vue-js-polnoe-rukovodstvo-dlya-sovremennoy-veb-razrabotki",
+      "user_id": "3",
+      "hashtag": [
+        "vuejs",
+        "js",
+        "learn",
+        "profi",
+        "web"
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "18.12.2018",
+      "id": 10
+    },
+    {
+      "text": "Жизнь современного человека невозможно представить без банковской карты. А появление и популярность таких карт предсказал американский...",
+      "link": "",
+      "user_id": "3",
+      "hashtag": [
+        "info",
+        "facts",
+        "bankcard"
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "18.12.2018",
+      "id": 11
+    },
+    {
+      "text": "В Древнем Китае мандарины считались символом счастья, богатства и долголетия. Именно поэтому, китайцы, отправляясь в гости, брали... ",
+      "link": "https://i-fakt.ru/interesnye-fakty-o-mandarinax/",
+      "user_id": "3",
+      "hashtag": [
+        "info",
+        "china",
+        "ancient",
+        "facts"
+      ],
+      "firstName": "John",
+      "lastName": "Doe",
+      "date": "18.12.2018",
+      "id": 12
     }
   ],
   "comments": [

@@ -10,7 +10,7 @@
               <span>{{ message.firstName }} &nbsp;</span>
               <span>{{ message.lastName }}<br></span>
             </router-link>
-            <span>posted: {{ message.date}}</span>
+            <span>{{$t("fields.posted")}}: {{ message.date}}</span>
           </div>
           <div class="message-block__frame__header__hashtags">
               <span v-for="(hash, index) in message.hashtag" :key="index">
@@ -26,7 +26,8 @@
       <div class="card-stacked message-block__frame__staked">
         <div class="card-content message-block__frame__staked__content">
           <p class="message-block__frame__staked__content__text">
-            {{ message.text }}
+            {{ message.text }}<br>
+            <a :href="`${message.link}`">{{cutLink()}}</a>
           </p>
         </div>
       </div>
@@ -55,6 +56,9 @@ export default {
   props: {
     message: Object
   },
+  created () {
+    this.cutLink()
+  },
   methods: {
     showComments () {
       this.isComments = !this.isComments
@@ -62,6 +66,23 @@ export default {
     isHash (tag) {
       if (tag.length > 0) {
         return true
+      }
+    },
+    cutLink () {
+      if (this.message.link) {
+        let isLink = this.message.link
+        console.log('link ' + isLink)
+        const size = 23
+        const n = 18
+        for (let i = 0; i < isLink.length; i++) {
+          console.log(isLink.length)
+          if (isLink.length > size) {
+            isLink.substr(0, n)
+            return isLink.substr(0, n) + ' ... '
+          } else {
+            return isLink
+          }
+        }
       }
     }
   }

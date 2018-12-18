@@ -55,7 +55,8 @@ const messages = {
       firstName: 'First Name',
       lastName: 'Last Name',
       email: 'Email',
-      quantityOfPosts: 'Quantity of posts'
+      quantityOfPosts: 'Quantity of posts',
+      posted: 'posted'
     }
   },
   ru: {
@@ -109,7 +110,8 @@ const messages = {
       firstName: 'Имя',
       lastName: 'Фамилия',
       email: 'Электронная почта',
-      quantityOfPosts: 'Количество постов'
+      quantityOfPosts: 'Количество постов',
+      posted: 'опубликовано'
     }
   }
 }
