@@ -63,7 +63,7 @@
       <div class="error-block" :class="{'error-block--visible': errors.length}">
         <p v-if="errors.length">
           <b>{{ $t("errors.title") }}</b>
-        <ul  class="error-block__list">
+        <ul class="error-block__list">
           <li v-for="error in errors" v-bind:key="error">{{ $t(error) }}</li>
         </ul>
         </p>

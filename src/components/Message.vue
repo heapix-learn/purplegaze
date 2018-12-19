@@ -25,17 +25,24 @@
       </div>
       <div class="card-stacked message-block__frame__staked">
         <div class="card-content message-block__frame__staked__content">
-          <p class="message-block__frame__staked__content__text">
+          <span class="message-block__frame__staked__content__text">
             {{ message.text }}<br>
-            <a :href="`${message.link}`">{{cutLink()}}</a>
-          </p>
+            <a :href="`${message.link}`">{{cutLink()}}</a><br>
+          <div v-if="message.image">
+            <img :src="message.image" alt="" width="100" height="100">
+          </div>
+          </span>
         </div>
       </div>
       <div class="card-action message-block__frame__staked__buttons-action">
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">call_missed</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">thumb_up</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">thumb_down</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i class="small material-icons">comment</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
+          class="small material-icons">call_missed</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
+          class="small material-icons">thumb_up</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
+          class="small material-icons">thumb_down</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i
+          class="small material-icons">comment</i></a>
       </div>
       <Comments v-if="isComments" :message_id="message.id"></Comments>
     </div>
@@ -71,11 +78,9 @@ export default {
     cutLink () {
       if (this.message.link) {
         let isLink = this.message.link
-        console.log('link ' + isLink)
         const size = 23
         const n = 18
         for (let i = 0; i < isLink.length; i++) {
-          console.log(isLink.length)
           if (isLink.length > size) {
             isLink.substr(0, n)
             return isLink.substr(0, n) + ' ... '
