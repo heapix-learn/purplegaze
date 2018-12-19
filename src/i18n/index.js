@@ -24,7 +24,9 @@ const messages = {
       searchHash: 'search #',
       goSearch: 'go search',
       editUser: 'edit user',
-      editPassword: 'edit password'
+      editPassword: 'edit password',
+      uploadImage: 'image',
+      uploadVideo: 'video'
     },
     errors: {
       title: 'Please correct the error:',
@@ -79,7 +81,9 @@ const messages = {
       searchHash: 'Найти #',
       goSearch: 'Искать',
       editUser: 'Редактировать пользователя',
-      editPassword: 'Редактировать пароль'
+      editPassword: 'Редактировать пароль',
+      uploadImage: 'Изображение',
+      uploadVideo: 'Видео'
     },
     errors: {
       title: 'Пожалуйста исправьте указанные ошибки:',

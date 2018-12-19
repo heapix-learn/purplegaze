@@ -35,7 +35,7 @@
             <div class="row">
               <div class="file-field input-field col s12">
                 <div class="btn">
-                  <span>Image</span>
+                  <span>{{ $t("buttons.uploadImage")}}</span>
                   <input type="file"
                          accept="image/*"
                          @change="onFileChange"
@@ -51,7 +51,7 @@
             <div class="row">
               <div class="file-field input-field col s12">
                 <div class="btn">
-                  <span>Video</span>
+                  <span>{{ $t("buttons.uploadVideo")}}</span>
                   <input type="file"
                          accept="video/*"
                   >

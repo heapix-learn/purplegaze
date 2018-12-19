@@ -356,6 +356,12 @@
       "author": "Bugs Bunny",
       "text": "Winter is cool!",
       "id": 21
+    },
+    {
+      "message_id": 13,
+      "author": "John Doe",
+      "text": "nice picture!",
+      "id": 22
     }
   ],
   "users": [

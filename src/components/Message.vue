@@ -38,9 +38,9 @@
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
           class="small material-icons">call_missed</i></a>
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
-          class="small material-icons">thumb_up</i></a>
+          class="small material-icons buttons-action-icon">thumb_up</i>0</a>
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
-          class="small material-icons">thumb_down</i></a>
+          class="small material-icons buttons-action-icon">thumb_down</i>0</a>
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i
           class="small material-icons">comment</i></a>
       </div>
@@ -157,5 +157,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .buttons-action-icon {
+    margin-right: 5px;
   }
 </style>
