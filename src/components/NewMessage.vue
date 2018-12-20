@@ -197,7 +197,6 @@ export default {
     resize: none;
     height: 60px;
     overflow-y: hidden;
-    white-space: nowrap;
   }
 
   .newmessage-block__content {
