@@ -89,7 +89,7 @@ export default {
               .then(response => {
                 return this.$store.dispatch('user/authUser', response.data[0])
               })
-            this.$router.push('/')
+            window.location.href = '/'
           })
           .catch(err => {
             console.error(err)

@@ -29,7 +29,7 @@
             {{ message.text }}<br>
             <a :href="`${message.link}`">{{cutLink()}}</a><br>
           <div v-if="message.image">
-            <img :src="message.image" alt="" width="100" height="100">
+            <img :src="message.image" alt="" width="100%">
           </div>
           </span>
         </div>
@@ -37,10 +37,12 @@
       <div class="card-action message-block__frame__staked__buttons-action">
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
           class="small material-icons">call_missed</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
-          class="small material-icons buttons-action-icon">thumb_up</i>0</a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
-          class="small material-icons buttons-action-icon">thumb_down</i>0</a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"
+           @click="postLike()"
+           :style="{ color: isThere ? 'green' : 'lightgrey' }"
+        >
+          <i class="small material-icons buttons-action-icon"
+          >thumb_up</i>{{this.currentLikes.length}}</a>
         <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i
           class="small material-icons">comment</i></a>
       </div>
@@ -50,48 +52,95 @@
 </template>
 
 <script>
-import Comments from '../components/comments/Comments.vue'
+  import Comments from '../components/comments/Comments.vue'
+  import axios from 'axios'
 
-export default {
-  name: 'Message',
-  data () {
-    return {
-      isComments: false
-    }
-  },
-  components: { Comments },
-  props: {
-    message: Object
-  },
-  created () {
-    this.cutLink()
-  },
-  methods: {
-    showComments () {
-      this.isComments = !this.isComments
-    },
-    isHash (tag) {
-      if (tag.length > 0) {
-        return true
+  export default {
+    name: 'Message',
+    data() {
+      return {
+        isComments: false,
+        isThere: false,
+        likeId: null,
+        likes: {
+          user_id: Number,
+          message_id: Number
+        },
+        currentLikes: []
       }
     },
-    cutLink () {
-      if (this.message.link) {
-        let isLink = this.message.link
-        const size = 23
-        const n = 18
-        for (let i = 0; i < isLink.length; i++) {
-          if (isLink.length > size) {
-            isLink.substr(0, n)
-            return isLink.substr(0, n) + ' ... '
-          } else {
-            return isLink
+    components: {Comments},
+    props: {
+      message: {
+        type: Object,
+        required: true
+      }
+    },
+    created() {
+      this.getLikes()
+      this.cutLink()
+    },
+    methods: {
+      showComments() {
+        this.isComments = !this.isComments
+      },
+      isHash(tag) {
+        if (tag.length > 0) {
+          return true
+        }
+      },
+      cutLink() {
+        if (this.message.link) {
+          let isLink = this.message.link
+          const size = 23
+          const n = 18
+          for (let i = 0; i < isLink.length; i++) {
+            if (isLink.length > size) {
+              isLink.substr(0, n)
+              return isLink.substr(0, n) + ' ... '
+            } else {
+              return isLink
+            }
           }
         }
+      },
+      async getLikes() {
+        const userId = localStorage.getItem('userId') // back is sucks
+        await axios.get('http://localhost:8008/likes?message_id=' + this.message.id)
+          .then(response => {
+            this.currentLikes = response.data
+          })
+        const isLiked = this.currentLikes.filter(item => item.user_id === userId)
+        this.likeId = isLiked[0].id
+        console.log('isLiked', isLiked[0].id)
+        if (isLiked.length !== 0) {
+          this.isThere = true
+        }
+      },
+      async postLike() {
+        if (!this.isThere) {
+          this.likes.user_id = this.$store.getters['user/user'].id
+          this.likes.message_id = this.message.id
+          await axios.post('http://localhost:8008/likes', this.likes)
+            .then(response => {
+              console.log(response.data)
+            })
+          this.getLikes()
+            .catch(err => {
+              console.error(err)
+            })
+        } else {
+          this.removeLike(this.likeId)
+        }
+      },
+      async removeLike(id) {
+        await axios.delete('http://localhost:8008/likes/' + id)
+        console.log('this.isThere ', this.isThere)
+        this.getLikes()
+        this.isThere = false
       }
     }
   }
-}
 </script>
 
 <style scoped>
