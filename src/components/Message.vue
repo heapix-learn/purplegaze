@@ -77,7 +77,6 @@ export default {
     }
   },
   created () {
-    this.getLikes()
     this.cutLink()
   },
   methods: {
@@ -110,9 +109,9 @@ export default {
         .then(response => {
           this.currentLikes = response.data
         })
-      const isLiked = this.currentLikes.filter(item => item.user_id === Number(userId))
-      this.likeId = isLiked[0].id
+      const isLiked = this.currentLikes.filter(item => item.user_id === +userId)
       if (isLiked.length !== 0) {
+        this.likeId = isLiked[0].id
         this.isThere = true
       }
     },
