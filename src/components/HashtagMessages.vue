@@ -1,8 +1,8 @@
 <template>
   <div class="hashtag-messages">
-    MessagesByHashtag:
+    {{$t("fields.messagesByHash")}}:
     #{{this.$route.params.hash}}
-    <p>Quantity of posts: {{messages.length}}</p>
+    <p>{{$t("fields.quantityOfPosts")}}: {{messages.length}}</p>
     <br>
     <div class="card horizontal" v-for="(message, id) in messages" :key="id">
       <Message :message="message"></Message>

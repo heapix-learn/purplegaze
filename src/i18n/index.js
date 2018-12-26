@@ -18,7 +18,15 @@ const messages = {
       createAcc: 'create account',
       logOut: 'logout',
       newMessagePage: 'create new message',
-      post: 'post message'
+      post: 'post message',
+      chooseSearch: 'search',
+      searchUser: 'search user',
+      searchHash: 'search #',
+      goSearch: 'go search',
+      editUser: 'edit user',
+      editPassword: 'edit password',
+      uploadImage: 'image',
+      uploadVideo: 'video'
     },
     errors: {
       title: 'Please correct the error:',
@@ -32,7 +40,25 @@ const messages = {
       validEmail: 'Enter a valid email address.',
       password: 'Enter a password.',
       exUser: 'This user already exists.',
-      validEnter: 'You entered an invalid email or password.'
+      validEnter: 'You entered an invalid email or password.',
+      enterUserName: 'Enter a user name.',
+      enterHashName: 'Enter a # name.',
+      userNotFound: 'Not found! Sorry, such user doesn\'t exist.',
+      hashNotFound: 'Not found! Sorry, such # doesn\'t exist.'
+    },
+    inputs: {
+      text: 'Text',
+      oldPassword: 'Old Password',
+      newPassword: 'New Password'
+    },
+    fields: {
+      infoByUser: 'Information by user',
+      messagesByHash: 'Messages by hashtag',
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      email: 'Email',
+      quantityOfPosts: 'Quantity of posts',
+      posted: 'posted'
     }
   },
   ru: {
@@ -49,7 +75,15 @@ const messages = {
       createAcc: 'Создать аккаунт',
       logOut: 'Выйти',
       newMessagePage: 'Создать новое сообщение',
-      post: 'Отправить сообщение'
+      post: 'Отправить сообщение',
+      chooseSearch: 'Поиск',
+      searchUser: 'Найти пользователя',
+      searchHash: 'Найти #',
+      goSearch: 'Искать',
+      editUser: 'Редактировать пользователя',
+      editPassword: 'Редактировать пароль',
+      uploadImage: 'Изображение',
+      uploadVideo: 'Видео'
     },
     errors: {
       title: 'Пожалуйста исправьте указанные ошибки:',
@@ -63,7 +97,25 @@ const messages = {
       validEmail: 'Укажите корректный адрес электронной почты.',
       password: 'Укажите пароль.',
       exUser: 'Такой пользователь уже существует.',
-      validEnter: 'Вы ввели неверные почту или пароль.'
+      validEnter: 'Вы ввели неверные почту или пароль.',
+      enterUserName: 'Введите имя пользователя.',
+      enterHashName: 'Введите название хэштега пользователя.',
+      userNotFound: 'Не найден! Извините, но такой пользователь не найден.',
+      hashNotFound: 'Не найден! Извините, но такой хэштег не найден.'
+    },
+    inputs: {
+      text: 'Текст',
+      oldPassword: 'Старый пароль',
+      newPassword: 'Новый пароль'
+    },
+    fields: {
+      infoByUser: 'Информация о пользователе',
+      messagesByHash: 'Сообщения по хэштегам',
+      firstName: 'Имя',
+      lastName: 'Фамилия',
+      email: 'Электронная почта',
+      quantityOfPosts: 'Количество постов',
+      posted: 'опубликовано'
     }
   }
 }

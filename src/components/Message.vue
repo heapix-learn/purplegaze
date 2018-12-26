@@ -2,7 +2,6 @@
   <div class="message-block">
     <div class="col s12 m7 frame message-block__frame">
       <div class="card-image message-block__frame__header">
-
         <img src="../assets/15.png" class="message-block__frame__header__image">
         <div class="message-block__frame__header__main-date">
           <div class="message-block__frame__header__main-date__user-date">
@@ -10,7 +9,7 @@
               <span>{{ message.firstName }} &nbsp;</span>
               <span>{{ message.lastName }}<br></span>
             </router-link>
-            <span>posted: {{ message.date}}</span>
+            <span>{{$t("fields.posted")}}: {{ message.date}}</span>
           </div>
           <div class="message-block__frame__header__hashtags">
               <span v-for="(hash, index) in message.hashtag" :key="index">
@@ -25,16 +24,28 @@
       </div>
       <div class="card-stacked message-block__frame__staked">
         <div class="card-content message-block__frame__staked__content">
-          <p class="message-block__frame__staked__content__text">
-            {{ message.text }}
-          </p>
+          <div class="message-block__frame__staked__content__text">
+            {{ message.text }}<br>
+            <a :href="`${message.link}`">{{cutLink()}}</a><br>
+            <div v-if="message.image">
+              <img :src="message.image" alt="" width="100%">
+            </div>
+          </div>
         </div>
       </div>
       <div class="card-action message-block__frame__staked__buttons-action">
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">call_missed</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">thumb_up</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i class="small material-icons">thumb_down</i></a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i class="small material-icons">comment</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"><i
+          class="small material-icons">call_missed</i></a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"
+           @click="postLike()"
+           :style="{ color: isThere ? 'green' : 'lightgrey' }"
+        >
+          <i class="small material-icons buttons-action-icon"
+          >thumb_up</i>{{this.currentLikes.length}}</a>
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"
+           @click="showComments()"
+        ><i
+          class="small material-icons">comment</i></a>
       </div>
       <Comments v-if="isComments" :message_id="message.id"></Comments>
     </div>
@@ -43,17 +54,37 @@
 
 <script>
 import Comments from '../components/comments/Comments.vue'
+import axios from 'axios'
 
 export default {
   name: 'Message',
   data () {
     return {
-      isComments: false
+      isComments: false,
+      isThere: false,
+      likeId: null,
+      likes: {
+        user_id: Number,
+        message_id: Number
+      },
+      currentLikes: []
     }
   },
   components: { Comments },
   props: {
-    message: Object
+    message: {
+      type: Object,
+      required: true
+    }
+  },
+  created () {
+    this.getLikes()
+    this.cutLink()
+  },
+  watch: {
+    message () {
+      this.getLikes()
+    }
   },
   methods: {
     showComments () {
@@ -63,6 +94,55 @@ export default {
       if (tag.length > 0) {
         return true
       }
+    },
+    cutLink () {
+      if (this.message.link) {
+        let isLink = this.message.link
+        const size = 23
+        const n = 18
+        for (let i = 0; i < isLink.length; i++) {
+          if (isLink.length > size) {
+            isLink.substr(0, n)
+            return isLink.substr(0, n) + ' ... '
+          } else {
+            return isLink
+          }
+        }
+      }
+    },
+    async getLikes () {
+      this.isThere = false
+      const userId = localStorage.getItem('userId') // back sucks!
+      await axios.get('http://localhost:8008/likes?message_id=' + this.message.id)
+        .then(response => {
+          this.currentLikes = response.data
+        })
+      const isLiked = this.currentLikes.filter(item => item.user_id === +userId)
+      if (isLiked.length !== 0) {
+        this.likeId = isLiked[0].id
+        this.isThere = true
+      }
+    },
+    async postLike () {
+      if (!this.isThere) {
+        this.likes.user_id = this.$store.getters['user/user'].id
+        this.likes.message_id = this.message.id
+        await axios.post('http://localhost:8008/likes', this.likes)
+          .then(response => {
+            console.log(response.data)
+          })
+        this.getLikes()
+          .catch(err => {
+            console.error(err)
+          })
+      } else {
+        this.removeLike(this.likeId)
+      }
+    },
+    async removeLike (id) {
+      await axios.delete('http://localhost:8008/likes/' + id)
+      this.getLikes()
+      this.isThere = false
     }
   }
 }
@@ -131,5 +211,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .buttons-action-icon {
+    margin-right: 5px;
   }
 </style>

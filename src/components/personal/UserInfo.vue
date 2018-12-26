@@ -26,7 +26,7 @@
                              maxlength="8"
                              v-model="newUser.firstName"
                       >
-                      <label for="first_name">First Name (max. 8)</label>
+                      <label for="first_name">{{$t("signup.firstName")}} (max. 8)</label>
                     </div>
                     <div class="input-field col s6">
                       <input id="last_name"
@@ -35,7 +35,7 @@
                              @input="clearErrors"
                              v-model="newUser.lastName"
                       >
-                      <label for="last_name">Last Name</label>
+                      <label for="last_name">{{$t("signup.lastName")}}</label>
                     </div>
                   </div>
                   <div class="row">
@@ -46,7 +46,7 @@
                              @input="clearErrors"
                              v-model="oldPassword"
                       >
-                      <label for="old_password">Old Password</label>
+                      <label for="old_password">{{$t("inputs.oldPassword")}}</label>
                     </div>
                   </div>
                   <div class="row">
@@ -57,7 +57,7 @@
                              @input="clearErrors"
                              v-model="newPassword"
                       >
-                      <label for="new_password">New Password</label>
+                      <label for="new_password">{{$t("inputs.newPassword")}}</label>
                     </div>
                   </div>
                 </form>
@@ -66,11 +66,11 @@
                 <a
                   class="waves-effect waves-light btn button-sign user-info__edit-user__button"
                   @click="editUser()"
-                >edit user</a>
+                >{{$t("buttons.editUser")}}</a>
                 <a
                   class="waves-effect waves-light btn button-sign user-info__edit-user__button"
                   @click="editPassword()"
-                >edit password</a>
+                >{{$t("buttons.editPassword")}}</a>
               </div>
             </div>
           </div>

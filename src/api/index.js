@@ -14,6 +14,7 @@ function signIn (user) {
   return axios.post('http://localhost:8008/signin', user)
     .then(response => {
       localStorage.jwt = response.data.jwt
+      localStorage.userId = response.data.jwt.slice(4)
       return response
     })
 }

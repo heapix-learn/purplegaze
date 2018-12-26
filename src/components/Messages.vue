@@ -15,24 +15,39 @@ export default {
   components: { Message },
   data () {
     return {
-      messages: []
+      messages: [],
+      page: 1,
+      perPage: 4
     }
   },
-  created () {
+  mounted () {
     this.getAllMessages()
+    this.scroll(this.messages)
   },
   methods: {
+    scroll () {
+      window.onscroll = () => {
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight
+        if (bottomOfWindow) {
+          this.page++
+          this.getAllMessages()
+        }
+      }
+    },
     async getAllMessages () {
-      await (axios.get('http://localhost:8008/messages'))
+      let newMessages = this.messages
+      await (axios.get('http://localhost:8008/messages?_page=' + this.page + '&_limit=' + this.perPage))
         .then(response => {
-          this.messages = response.data
+          for (let i = 0; i < response.data.length; i++) {
+            newMessages.push(response.data[i])
+          }
         })
+      this.messages = newMessages
     }
   }
 }
 </script>
 
 <style scoped>
-  .messages-block__card {
-  }
+
 </style>
