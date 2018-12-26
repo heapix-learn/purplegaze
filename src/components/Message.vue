@@ -27,9 +27,9 @@
           <div class="message-block__frame__staked__content__text">
             {{ message.text }}<br>
             <a :href="`${message.link}`">{{cutLink()}}</a><br>
-          <div v-if="message.image">
-            <img :src="message.image" alt="" width="100%">
-          </div>
+            <div v-if="message.image">
+              <img :src="message.image" alt="" width="100%">
+            </div>
           </div>
         </div>
       </div>
@@ -42,7 +42,9 @@
         >
           <i class="small material-icons buttons-action-icon"
           >thumb_up</i>{{this.currentLikes.length}}</a>
-        <a class="card-action-icons message-block__frame__staked__buttons-action__icons" @click="showComments()"><i
+        <a class="card-action-icons message-block__frame__staked__buttons-action__icons"
+           @click="showComments()"
+        ><i
           class="small material-icons">comment</i></a>
       </div>
       <Comments v-if="isComments" :message_id="message.id"></Comments>
