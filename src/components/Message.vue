@@ -2,7 +2,6 @@
   <div class="message-block">
     <div class="col s12 m7 frame message-block__frame">
       <div class="card-image message-block__frame__header">
-
         <img src="../assets/15.png" class="message-block__frame__header__image">
         <div class="message-block__frame__header__main-date">
           <div class="message-block__frame__header__main-date__user-date">
@@ -77,7 +76,13 @@ export default {
     }
   },
   created () {
+    this.getLikes()
     this.cutLink()
+  },
+  watch: {
+    message () {
+      this.getLikes()
+    }
   },
   methods: {
     showComments () {
@@ -104,7 +109,8 @@ export default {
       }
     },
     async getLikes () {
-      const userId = localStorage.getItem('userId') // back is sucks
+      this.isThere = false
+      const userId = localStorage.getItem('userId') // back sucks!
       await axios.get('http://localhost:8008/likes?message_id=' + this.message.id)
         .then(response => {
           this.currentLikes = response.data

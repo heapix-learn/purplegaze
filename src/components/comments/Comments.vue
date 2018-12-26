@@ -37,7 +37,6 @@ export default {
     async getComments () {
       await axios.get('http://localhost:8008/comments?message_id=' + this.message_id)
         .then(response => {
-          console.log(this.comments)
           this.comments = response.data
         })
     },
